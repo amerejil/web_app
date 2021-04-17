@@ -1,0 +1,34 @@
+.card-container {
+  background-color: white;
+  display: flex;
+  min-width: 180px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  margin: 1.2%;
+
+  transition: 0.5s;
+  .card-absolute {
+    height: auto;
+    max-width: 220px;
+    min-width: 180px;
+    .imagen {
+      object-fit: contain;
+      border-radius: 8px 8px 0 0;
+      height: auto;
+      width: 100%;
+
+      margin: auto;
+    }
+    h5 {
+      font-size: 1.2rem;
+      margin: 2% !important;
+      text-align: center;
+      color: #0aa3a8;
+    }
+  }
+}
+.card-container:hover {
+  transform: scale(1.06);
+}

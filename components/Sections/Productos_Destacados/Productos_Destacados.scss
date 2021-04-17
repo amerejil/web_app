@@ -1,0 +1,33 @@
+.products {
+  background: whitesmoke;
+  scroll-margin-top: 80px;
+  padding: 1%;
+
+  .section-title {
+    color: #05665a;
+    padding: 2% 0px 0px 2% !important;
+    display: flex;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .CardProduct-container {
+    padding: 1%;
+    display: flex;
+
+    touch-action: manipulation !important;
+    white-space: nowrap;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+    &::-webkit-scrollbar {
+      height: 7px !important;
+    }
+    &::-webkit-scrollbar-track {
+      background: none !important;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-image: linear-gradient(to right, #15c1d1, #83007c) !important;
+    }
+  }
+}

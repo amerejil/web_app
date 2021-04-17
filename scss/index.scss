@@ -1,0 +1,15 @@
+@import "./colors.scss";
+
+//comoponentes
+@import "../components/header/Header.scss";
+@import "../components/Sections/Section_1/Section_1.scss";
+@import "../components/Sections/Section_2/Section_2.scss";
+@import "../components/Search/Search.scss";
+@import "../components/CarouselScreenshots/CarouselScreenshots.scss";
+@import "../components/CardCategories/CardCategories.scss";
+@import "../components/Sections/Productos_Destacados/Productos_Destacados.scss";
+@import "../components/CardProduct/CardProduct.scss";
+
+//paginas
+@import "../pages/index.scss";
+@import "../pages/categorias/categorias.scss";
