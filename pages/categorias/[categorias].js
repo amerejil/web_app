@@ -103,16 +103,7 @@ export default function Categorias(props) {
     </div>
   );
 }
-export async function getStaticPaths() {
-  const listcategories = await getCategoriasApi();
-  const paths = listcategories.map((item) => ({
-    params: { categorias: `${item.url}` },
-  }));
-  return {
-    paths,
-    fallback: false,
-  };
-}
+
 import { BASE_PATH } from "../../Utils/constants";
 export async function getStaticProps(contex) {
   try {
