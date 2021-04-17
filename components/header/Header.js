@@ -50,7 +50,7 @@ export default function Header() {
               </a>
             </li>
             <li className="nav-item">
-              <a href="" className="nav-links">
+              <a href="/" className="nav-links">
                 <Icon className="cart"></Icon>
               </a>
             </li>

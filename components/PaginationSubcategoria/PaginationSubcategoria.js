@@ -6,24 +6,24 @@ export default function PaginationSubcategoria(props) {
     setactivepagesArry,
     activepagesArry,
     totalproducts,
-    page,
     limitPerPage,
-    setactivePages,
-    index,
-    activepages,
-  } = props;
-  const newarray = activepagesArry;
-  const totalPages = Math.ceil(totalproducts / limitPerPage);
-  setactivePages(newarray[index]);
-  const gotoPage = (newPage) => {
-    setactivePages(newPage);
-    activepagesArry[index] = newPage;
-  };
 
+    index,
+  } = props;
+
+  const totalPages = Math.ceil(totalproducts / limitPerPage);
+
+  const gotoPage = (newPage) => {
+    const newarray = [...activepagesArry];
+    newarray[index] = newPage;
+    setactivepagesArry(newarray);
+  };
+  console.log("position", activepagesArry[index]);
+  console.log(index);
   return (
     <div className="pagination">
       <PaginationSU
-        activePage={activepages}
+        activePage={activepagesArry[index]}
         totalPages={totalPages}
         firstItem={null}
         lastItem={null}
