@@ -48,7 +48,6 @@ export default function Categorias() {
   };
 
   useEffect(() => {
-    console.log("hola useffect 1");
     if (query?.categorias) {
       (async () => {
         const url = `${BASE_PATH}/categorias?url=${query.categorias}`;
@@ -69,7 +68,6 @@ export default function Categorias() {
   }, [query.categorias]);
 
   useEffect(() => {
-    console.log("hola useffect 2");
     if (query?.categorias) {
       (async () => {
         const response = await getProductsCategorieApi(
@@ -111,7 +109,7 @@ export default function Categorias() {
       setproductsSubc([]);
     };
   }, [indexsubc]);
-  console.log(totalproductsubc);
+
   let pane_categoria = [];
   let panes_subcategorias = [];
   if (categorias) {

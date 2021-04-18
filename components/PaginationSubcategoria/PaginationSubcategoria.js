@@ -12,7 +12,6 @@ export default function PaginationSubcategoria(props) {
   } = props;
 
   const totalPages = Math.ceil(totalproducts / limitPerPage);
-  console.log("hola total productos", totalproducts);
 
   const gotoPage = (newPage) => {
     const newarray = [...activepagesArry];
