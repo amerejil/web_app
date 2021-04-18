@@ -12,26 +12,30 @@ export default function PaginationSubcategoria(props) {
   } = props;
 
   const totalPages = Math.ceil(totalproducts / limitPerPage);
+  console.log("hola total productos", totalproducts);
 
   const gotoPage = (newPage) => {
     const newarray = [...activepagesArry];
     newarray[index] = newPage;
     setactivepagesArry(newarray);
   };
-  console.log("position", activepagesArry[index]);
-  console.log(index);
+
   return (
     <div className="pagination">
-      <PaginationSU
-        activePage={activepagesArry[index]}
-        totalPages={totalPages}
-        firstItem={null}
-        lastItem={null}
-        onPageChange={(_, data) => gotoPage(data.activePage)}
-        boundaryRange={0}
-        siblingRange={1}
-        ellipsisItem={null}
-      ></PaginationSU>
+      {totalPages > 1 ? (
+        <PaginationSU
+          activePage={activepagesArry[index]}
+          totalPages={totalPages}
+          firstItem={null}
+          lastItem={null}
+          onPageChange={(_, data) => {
+            gotoPage(data.activePage);
+          }}
+          boundaryRange={0}
+          siblingRange={1}
+          ellipsisItem={null}
+        ></PaginationSU>
+      ) : null}
     </div>
   );
 }

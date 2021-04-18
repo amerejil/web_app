@@ -1,25 +1,36 @@
 import Header from "../../components/header";
 import { useRouter } from "next/router";
-import { size } from "lodash";
+import { countBy, size } from "lodash";
 import SelectSubCategorie from "../../components/SelectSubCategorie";
+import { BASE_PATH } from "../../Utils/constants";
 import {
   getCategoriasApi,
+  getTotalProductsSubCategorieApi,
   getProductsCategorieApi,
+  getProductsSubcategorieApi,
   getTotalProductsCategorieApi,
 } from "../../Api/Categorias";
 import { useEffect, useState } from "react";
-import { Tab } from "semantic-ui-react";
+import { Tab, Loader } from "semantic-ui-react";
 import Pagination from "../../components/Pagination";
 import PaginationSubcategoria from "../../components/PaginationSubcategoria";
-import { Loader } from "semantic-ui-react";
+
 import ListProducts from "../../components/ListProducts";
 const limitPerPage = 1;
 
-export default function Categorias(props) {
-  const { categorias, subcategorias, totalproducts } = props;
+export default function Categorias() {
+  const [indexsubc, setindexsubc] = useState(1);
+  const [totalproducts, settotalproducts] = useState(null);
   const { query } = useRouter();
+  const [subcategorias, setsubcategorias] = useState(null);
+  const [categorias, setcategorias] = useState(null);
   const [products, setproducts] = useState(null);
+  const [productsSubc, setproductsSubc] = useState([]);
   const [activePage, setactivePage] = useState(1);
+  const [totalproductsubc, settotalproductsubc] = useState(null);
+
+  const [activepagesArry, setactivepagesArry] = useState([]);
+
   const getStartItem = () => {
     const currentPages = parseInt(activePage);
     if (!activePage || currentPages === 1) return 0;
@@ -27,8 +38,39 @@ export default function Categorias(props) {
       return currentPages * limitPerPage - limitPerPage;
     }
   };
+
+  const getStartItemSubc = (index) => {
+    const currentPages = parseInt(activepagesArry[index]);
+    if (!activepagesArry[index] || currentPages === 1) return 0;
+    else {
+      return currentPages * limitPerPage - limitPerPage;
+    }
+  };
+
   useEffect(() => {
-    if (query.categorias) {
+    console.log("hola useffect 1");
+    if (query?.categorias) {
+      (async () => {
+        const url = `${BASE_PATH}/categorias?url=${query.categorias}`;
+        const response = await fetch(url);
+        const result = await response.json();
+        setcategorias(result[0]);
+        const r = await fetch(`${BASE_PATH}/subcategorias`);
+        const subc = await r.json();
+        setsubcategorias(subc);
+        const countTotalProducts = await getTotalProductsCategorieApi(
+          query.categorias
+        );
+        const initialState = subc.map(() => 1);
+        setactivepagesArry(initialState);
+        settotalproducts(countTotalProducts);
+      })();
+    }
+  }, [query.categorias]);
+
+  useEffect(() => {
+    console.log("hola useffect 2");
+    if (query?.categorias) {
       (async () => {
         const response = await getProductsCategorieApi(
           query.categorias,
@@ -38,91 +80,108 @@ export default function Categorias(props) {
         setproducts(response);
       })();
     }
-  }, [activePage]);
+  }, [activePage, query.categorias]);
 
-  const pane_categoria = [
-    {
-      menuItem: `${categorias.title}`,
-      render: () => (
-        <Tab.Pane>
-          {!products && <Loader active> Cargando juegos</Loader>}
-          {products && size(products) === 0 && (
-            <div>No hay más {categorias.title}</div>
-          )}
-          {size(products) > 0 && (
-            <ListProducts products={products}></ListProducts>
-          )}
-          {totalproducts ? (
-            <Pagination
-              setactivePage={setactivePage}
-              totalproducts={totalproducts}
-              page={activePage}
-              limitPerPage={limitPerPage}
-            ></Pagination>
-          ) : null}
-        </Tab.Pane>
-      ),
-    },
-  ];
-  const initialState = subcategorias.map(() => 1);
+  useEffect(() => {
+    if (subcategorias && indexsubc > 0) {
+      (async () => {
+        const result = await getProductsSubcategorieApi(
+          subcategorias[indexsubc - 1].url,
+          limitPerPage,
+          getStartItemSubc(indexsubc - 1)
+        );
+        setproductsSubc(result);
+      })();
+    }
+    return () => {};
+  }, [activepagesArry, indexsubc]);
 
-  const [activepages, setactivePages] = useState(1);
-  const [activepagesArry, setactivepagesArry] = useState(initialState);
-  console.log(activepagesArry);
-  const panes_subcategorias = subcategorias.map((item, i) => {
-    return {
-      menuItem: `${item.title}`,
-      render: () => (
-        <Tab.Pane>
-          <PaginationSubcategoria
-            activepagesArry={activepagesArry}
-            activepages={activepages}
-            setactivepagesArry={setactivepagesArry}
-            index={i}
-            setactivePages={setactivePages}
-            totalproducts={totalproducts}
-            limitPerPage={1}
-          ></PaginationSubcategoria>
-        </Tab.Pane>
-      ),
+  useEffect(() => {
+    if (subcategorias && indexsubc > 0) {
+      (async () => {
+        const count = await getTotalProductsSubCategorieApi(
+          subcategorias[indexsubc - 1].url
+        );
+        settotalproductsubc(count);
+      })();
+    }
+
+    return () => {
+      settotalproductsubc(0);
+      setproductsSubc([]);
     };
-  });
+  }, [indexsubc]);
+  console.log(totalproductsubc);
+  let pane_categoria = [];
+  let panes_subcategorias = [];
+  if (categorias) {
+    pane_categoria = [
+      {
+        menuItem: `${categorias.title}`,
+        render: () => (
+          <Tab.Pane>
+            {!products && <Loader active> Cargando productos</Loader>}
+            {products && size(products) === 0 && (
+              <div>No hay más {categorias.title}</div>
+            )}
+            {size(products) > 0 && (
+              <ListProducts products={products}></ListProducts>
+            )}
+            {totalproducts ? (
+              <Pagination
+                setactivePage={setactivePage}
+                totalproducts={totalproducts}
+                page={activePage}
+                limitPerPage={limitPerPage}
+              ></Pagination>
+            ) : null}
+          </Tab.Pane>
+        ),
+      },
+    ];
+  }
 
+  if (subcategorias) {
+    panes_subcategorias = subcategorias.map((item, i) => {
+      return {
+        menuItem: `${item.title}`,
+        render: () => (
+          <Tab.Pane>
+            <ListProducts products={productsSubc}></ListProducts>
+            <PaginationSubcategoria
+              activepagesArry={activepagesArry}
+              setactivepagesArry={setactivepagesArry}
+              index={i}
+              totalproducts={totalproductsubc}
+              limitPerPage={limitPerPage}
+            ></PaginationSubcategoria>
+          </Tab.Pane>
+        ),
+      };
+    });
+  }
   const panes = [...pane_categoria, ...panes_subcategorias];
-
+  /*console.log("hola query", query.categorias);
+  console.log("Hola categoria", categorias);
+  console.log("hola productos", products);
+  console.log("hola total productos por categoria", totalproducts);
+  console.log("hola subcategorias", subcategorias);
+  console.log("hola valores iniciales", activepagesArry);
+  console.log("hola panes subcategorias", panes_subcategorias);
+  const panes = [...pane_categoria, ...panes_subcategorias];*/
   if (!products) return null;
-
   return (
     <div className="page-categorias">
       <Header></Header>
       <Tab
+        defaultActiveIndex={0}
         menu={{ fluid: true, vertical: true, tabular: false, pointing: true }}
         className="tabs-categorias"
         panes={panes}
+        onTabChange={(_, event) => {
+          setindexsubc(event.activeIndex);
+        }}
       ></Tab>
     </div>
   );
-}
-
-import { BASE_PATH } from "../../Utils/constants";
-export async function getStaticProps(contex) {
-  try {
-    const url = `${BASE_PATH}/categorias?url=${contex.params.categorias}`;
-    const response = await fetch(url);
-    const r = await fetch(`${BASE_PATH}/subcategorias`);
-    const count = await getTotalProductsCategorieApi(contex.params.categorias);
-    const a = await r.json();
-    const result = await response.json();
-
-    return {
-      props: {
-        categorias: result[0],
-        subcategorias: a,
-        totalproducts: count,
-      },
-    };
-  } catch (error) {
-    console.log(error);
-    return null;
-  }
 }
