@@ -50,12 +50,17 @@ export async function getTotalProductsCategorieApi(categorie) {
   }
 }
 
-export async function getProductsSubcategorieApi(subcategoria, limit, start) {
+export async function getProductsSubcategorieApi(
+  categorie,
+  subcategoria,
+  limit,
+  start
+) {
   try {
     const limitItems = `_limit=${limit}`;
     const sortItem = "_sort=createdAt:desc";
     const startItems = `_start=${start}`;
-    const url = ` ${BASE_PATH}/productos?subcategoria.url=${subcategoria}&${limitItems}&${sortItem}&${startItems}`;
+    const url = ` ${BASE_PATH}/productos?categoria.url=${categorie}&subcategoria.url=${subcategoria}&${limitItems}&${sortItem}&${startItems}`;
     const response = await fetch(url);
     const result = await response.json();
     return result;
@@ -65,9 +70,9 @@ export async function getProductsSubcategorieApi(subcategoria, limit, start) {
   }
 }
 
-export async function getTotalProductsSubCategorieApi(subcategorie) {
+export async function getTotalProductsSubCategorieApi(categorie, subcategorie) {
   try {
-    const url = `${BASE_PATH}/productos/count?subcategoria.url=${subcategorie}`;
+    const url = `${BASE_PATH}/productos/count?categoria.url=${categorie}&subcategoria.url=${subcategorie}`;
     const response = await fetch(url);
     const result = await response.json();
     return result;

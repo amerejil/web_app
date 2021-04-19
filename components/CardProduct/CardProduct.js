@@ -1,26 +1,31 @@
 import React from "react";
 import { Icon, Image } from "semantic-ui-react";
-export default function CardProduct() {
+export default function CardProduct(props) {
+  const { product } = props;
   return (
     <div className="card_product">
-      <div className="card_product_absolute">
-        <Image className="imagen" src="/Img2_.png" alt=""></Image>
-        <div className="card__precis">
-          <a href="" className="card__icon">
-            <Icon className="heart outline"></Icon>
-          </a>
-
-          <div>
-            <span className="card__preci--before">$0.00</span>
-            <span className="card__preci--now">$0.00</span>
-          </div>
-          <a href="" className="card__icon">
-            <Icon className="cart"></Icon>
-          </a>
-        </div>
-      </div>
       <div className="card__name">
-        <p>Nombre</p>
+        <p>{product.title}</p>
+      </div>
+      <div className="card_product_absolute">
+        <Image
+          className="imagen"
+          src={product.imagen.formats.small.url}
+          alt={product.title}
+        ></Image>
+        <div className="card__precis">
+          <div className="card__icon">
+            <Icon className="heart outline"></Icon>
+          </div>
+
+          <div className="card_price">
+            <span className="card__preci--before">$0.00</span>
+            <span className="card__preci--now">${product.price}</span>
+          </div>
+          <div className="card__icon">
+            <Icon className="cart"></Icon>
+          </div>
+        </div>
       </div>
     </div>
   );

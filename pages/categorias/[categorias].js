@@ -16,7 +16,7 @@ import Pagination from "../../components/Pagination";
 import PaginationSubcategoria from "../../components/PaginationSubcategoria";
 
 import ListProducts from "../../components/ListProducts";
-const limitPerPage = 1;
+const limitPerPage = 5;
 
 export default function Categorias() {
   const [indexsubc, setindexsubc] = useState(1);
@@ -84,6 +84,7 @@ export default function Categorias() {
     if (subcategorias && indexsubc > 0) {
       (async () => {
         const result = await getProductsSubcategorieApi(
+          categorias.url,
           subcategorias[indexsubc - 1].url,
           limitPerPage,
           getStartItemSubc(indexsubc - 1)
@@ -98,6 +99,7 @@ export default function Categorias() {
     if (subcategorias && indexsubc > 0) {
       (async () => {
         const count = await getTotalProductsSubCategorieApi(
+          categorias.url,
           subcategorias[indexsubc - 1].url
         );
         settotalproductsubc(count);
@@ -106,7 +108,7 @@ export default function Categorias() {
 
     return () => {
       settotalproductsubc(0);
-      setproductsSubc([]);
+      setproductsSubc(null);
     };
   }, [indexsubc]);
 
@@ -145,6 +147,10 @@ export default function Categorias() {
         menuItem: `${item.title}`,
         render: () => (
           <Tab.Pane>
+            {!productsSubc && <Loader active> Cargando productos</Loader>}
+            {productsSubc && size(productsSubc) === 0 && (
+              <div>No hay más {categorias.title}</div>
+            )}
             <ListProducts products={productsSubc}></ListProducts>
             <PaginationSubcategoria
               activepagesArry={activepagesArry}

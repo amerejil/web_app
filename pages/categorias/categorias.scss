@@ -3,6 +3,31 @@
     margin: 0 !important;
     .ui.grid {
       margin: 0 !important;
+      .four.wide.column {
+        width: 20% !important;
+      }
+      .stretched.twelve.wide.column {
+        width: 80% !important;
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .page-categorias {
+    .tabs-categorias {
+      margin: 0 !important;
+      .ui.grid {
+        margin: 0 !important;
+        .four.wide.column {
+          width: 37% !important;
+          .ui.menu {
+            font-size: 0.85rem;
+          }
+        }
+        .stretched.twelve.wide.column {
+          width: 63% !important;
+        }
+      }
     }
   }
 }
