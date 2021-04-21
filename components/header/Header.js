@@ -33,7 +33,10 @@ export default function Header() {
         <div className="navbar-container">
           <Link href="/" onClick={closeMobileMenu}>
             <a className="navbar-logo">
-              <img src="https://lx-1992.s3.us-east-2.amazonaws.com/thumbnail_Logo_Porcelanito_36c21b403e.png"></img>
+              <img
+                src="https://lx-1992.s3.us-east-2.amazonaws.com/thumbnail_Logo_Porcelanito_36c21b403e.png"
+                alt="Porcelanito"
+              ></img>
               El Porcelanito
             </a>
           </Link>

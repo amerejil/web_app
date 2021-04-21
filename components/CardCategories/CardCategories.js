@@ -9,8 +9,12 @@ export default function CardCategories(props) {
       <a className={`card-container ${categorias.id}`}>
         <div className="card-absolute">
           <img
+            onLoad={() => {
+              console.log("cargado");
+            }}
             className="imagen"
             src={categorias.imagen.formats.small.url}
+            alt={categorias.title}
           ></img>
           <h5>{categorias.title}</h5>
         </div>

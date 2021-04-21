@@ -7,7 +7,6 @@ import Productos_Destacados from "../components/Sections/Productos_Destacados";
 import useUser from "../hooks/useUser";
 import { getCategoriasApi } from "../Api/Categorias";
 export default function Home() {
-  const { user } = useUser();
   const [categorias, setcategorias] = useState(null);
   useEffect(() => {
     (async () => {

@@ -65,7 +65,7 @@ export default function Categorias() {
         settotalproducts(countTotalProducts);
       })();
     }
-  }, [query.categorias]);
+  }, []);
 
   useEffect(() => {
     if (query?.categorias) {
