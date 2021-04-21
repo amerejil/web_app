@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 import { Loader } from "semantic-ui-react";
 import Productos_Destacados from "../components/Sections/Productos_Destacados";
 import useUser from "../hooks/useUser";
-import { getCategoriasApi } from "../api/Categorias";
+import { getCategoriasApi } from "../Api/Categorias";
 export default function Home() {
   const { user } = useUser();
   const [categorias, setcategorias] = useState(null);
