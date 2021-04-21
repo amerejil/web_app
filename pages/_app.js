@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import jwtDecode from "jwt-decode";
 import AuthContext from "../context/AuthContext";
 import UserContext from "../context/UserContext";
-import { getMeaApi } from "../Api/user";
+import { getMeaApi } from "../api/user";
 import { setToken, getToken, removeToken } from "../api/token";
 import "react-toastify/dist/ReactToastify.css";
 import { useRouter } from "next/router";

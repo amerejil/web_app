@@ -9,7 +9,7 @@ import {
   getProductsCategorieApi,
   getProductsSubcategorieApi,
   getTotalProductsCategorieApi,
-} from "../../Api/Categorias";
+} from "../../api/Categorias";
 import { useEffect, useState } from "react";
 import { Tab, Loader } from "semantic-ui-react";
 import Pagination from "../../components/Pagination";
