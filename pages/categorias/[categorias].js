@@ -2,14 +2,14 @@ import Header from "../../components/header";
 import { useRouter } from "next/router";
 import { countBy, size } from "lodash";
 import SelectSubCategorie from "../../components/SelectSubCategorie";
-import { BASE_PATH } from "../../utils/constants";
+import { BASE_PATH } from "../../Utils/constants";
 import {
   getCategoriasApi,
   getTotalProductsSubCategorieApi,
   getProductsCategorieApi,
   getProductsSubcategorieApi,
   getTotalProductsCategorieApi,
-} from "../../api/Categorias";
+} from "../../Api/Categorias";
 import { useEffect, useState } from "react";
 import { Tab, Loader } from "semantic-ui-react";
 import Pagination from "../../components/Pagination";

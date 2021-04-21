@@ -3,7 +3,7 @@ import { Form, Button } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
-import { loginApi, resetPasswordApi } from "../../../api/user";
+import { loginApi, resetPasswordApi } from "../../../Api/user";
 import useAuth from "../../../hooks/useAuth";
 export default function LoginForm(props) {
   const { showRegisterForm, onCloseModal } = props;

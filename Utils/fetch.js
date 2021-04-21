@@ -1,4 +1,4 @@
-import { getToken, hasExpiredToken } from "../api/token";
+import { getToken, hasExpiredToken } from "../Api/token";
 export async function authFech(url, params, lougout) {
   const token = getToken();
   if (!token) {

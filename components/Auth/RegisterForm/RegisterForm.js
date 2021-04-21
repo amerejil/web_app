@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Button } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { registerApi } from "../../../api/user";
+import { registerApi } from "../../../Api/user";
 import { toast } from "react-toastify";
 export default function RegisterForm(props) {
   const { showLoginForm } = props;

@@ -1,5 +1,5 @@
-import { BASE_PATH } from "../utils/constants";
-import { authFech } from "../utils/fetch";
+import { BASE_PATH } from "../Utils/constants";
+import { authFech } from "../Utils/fetch";
 export async function registerApi(formData) {
   try {
     const url = `${BASE_PATH}/auth/local/register`;

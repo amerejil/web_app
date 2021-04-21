@@ -4,7 +4,7 @@ import {
   getCategoriasApi,
   getProductsCategorieApi,
   getTotalProductsCategorieApi,
-} from "../api/Categorias";
+} from "../Api/Categorias";
 export default function Product() {
   return (
     <>

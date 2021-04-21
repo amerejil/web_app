@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getCategoriasApi, getSubCategoriasApi } from "../../api/Categorias";
+import { getCategoriasApi, getSubCategoriasApi } from "../../Api/Categorias";
 export default function SelectSubCategorie(props) {
   const { listcategories } = props;
 
