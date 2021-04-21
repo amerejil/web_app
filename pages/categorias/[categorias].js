@@ -2,7 +2,7 @@ import Header from "../../components/header";
 import { useRouter } from "next/router";
 import { countBy, size } from "lodash";
 import SelectSubCategorie from "../../components/SelectSubCategorie";
-import { BASE_PATH } from "../../Utils/constants";
+import { BASE_PATH } from "../../utils/constants";
 import {
   getCategoriasApi,
   getTotalProductsSubCategorieApi,

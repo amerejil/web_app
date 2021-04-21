@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { Icon, Image } from "semantic-ui-react";
 export default function CardProduct(props) {
   const { product } = props;
@@ -8,11 +9,14 @@ export default function CardProduct(props) {
         <p>{product.title}</p>
       </div>
       <div className="card_product_absolute">
-        <Image
-          className="imagen"
-          src={product.imagen.formats.small.url}
-          alt={product.title}
-        ></Image>
+        <Link href={`/${product.url}`}>
+          <Image
+            className="imagen"
+            src={product.imagen.formats.small.url}
+            alt={product.title}
+          ></Image>
+        </Link>
+
         <div className="card__precis">
           <div className="card__icon">
             <Icon className="heart outline"></Icon>

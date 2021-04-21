@@ -1,4 +1,4 @@
-import { BASE_PATH } from "../Utils/constants";
+import { BASE_PATH } from "../utils/constants";
 export async function getCategoriasApi() {
   try {
     const url = `${BASE_PATH}/categorias?_sort=position:asc`;

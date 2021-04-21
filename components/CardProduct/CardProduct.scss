@@ -1,4 +1,5 @@
 .card_product {
+  opacity: 0.8;
   background-color: white;
   justify-content: center;
   align-items: center;
@@ -13,6 +14,7 @@
     transition: 0.5s;
     width: 100%;
     .ui.image.imagen {
+      cursor: pointer;
       height: auto;
       width: 160px;
       margin: auto;
@@ -70,6 +72,7 @@
   }
 
   &:hover {
+    opacity: 1;
     transform: scale(1.03);
   }
 }

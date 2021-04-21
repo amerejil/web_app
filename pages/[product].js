@@ -13,4 +13,3 @@ export default function Product() {
     </>
   );
 }
-import { BASE_PATH } from "../Utils/constants";
