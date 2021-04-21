@@ -16,7 +16,7 @@ import Pagination from "../../components/Pagination";
 import PaginationSubcategoria from "../../components/PaginationSubcategoria";
 
 import ListProducts from "../../components/ListProducts";
-const limitPerPage = 5;
+const limitPerPage = 6;
 
 export default function Categorias() {
   const [indexsubc, setindexsubc] = useState(1);
