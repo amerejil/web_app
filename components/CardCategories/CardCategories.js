@@ -6,7 +6,7 @@ export default function CardCategories(props) {
 
   return (
     <Link href={`/categorias/${categorias.url}`}>
-      <div className={`card-container ${categorias.id}`}>
+      <a className={`card-container ${categorias.id}`}>
         <div className="card-absolute">
           <img
             className="imagen"
@@ -14,7 +14,7 @@ export default function CardCategories(props) {
           ></img>
           <h5>{categorias.title}</h5>
         </div>
-      </div>
+      </a>
     </Link>
   );
 }

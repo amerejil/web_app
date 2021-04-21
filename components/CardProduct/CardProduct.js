@@ -10,11 +10,13 @@ export default function CardProduct(props) {
       </div>
       <div className="card_product_absolute">
         <Link href={`/${product.url}`}>
-          <Image
-            className="imagen"
-            src={product.imagen.formats.small.url}
-            alt={product.title}
-          ></Image>
+          <a>
+            <Image
+              className="imagen"
+              src={product.imagen.formats.small.url}
+              alt={product.title}
+            ></Image>
+          </a>
         </Link>
 
         <div className="card__precis">

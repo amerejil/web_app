@@ -7,7 +7,7 @@ export default function Section_2(props) {
     <section className="section-categories" id="sect-2">
       <div className="section-title">Categorías</div>
       <div className="cards-container">
-        {categorias.map((card) => (
+        {categorias?.map((card) => (
           <CardCategories key={card.id} categorias={card}></CardCategories>
         ))}
       </div>

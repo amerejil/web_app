@@ -32,10 +32,10 @@ export default function Header() {
       <nav className="navbar">
         <div className="navbar-container">
           <Link href="/" onClick={closeMobileMenu}>
-            <div className="navbar-logo">
+            <a className="navbar-logo">
               <img src="https://lx-1992.s3.us-east-2.amazonaws.com/thumbnail_Logo_Porcelanito_36c21b403e.png"></img>
               El Porcelanito
-            </div>
+            </a>
           </Link>
           <div className="menu-icon">
             <Icon
@@ -59,14 +59,14 @@ export default function Header() {
             </li>
 
             {user ? (
-              <Link href="/account">
-                <li className="nav-item">
-                  <div className="nav-links">
+              <li className="nav-item">
+                <Link href="/account">
+                  <a className="nav-links">
                     <Icon name="user outline" />
                     {user.name} {user.lastname}
-                  </div>
-                </li>
-              </Link>
+                  </a>
+                </Link>
+              </li>
             ) : null}
             {auth ? (
               <li className="nav-item">

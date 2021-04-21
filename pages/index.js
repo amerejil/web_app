@@ -18,16 +18,10 @@ export default function Home() {
 
   return (
     <div className="home">
-      {!categorias && !user && <Loader active> Cargando página</Loader>}
-      {console.log(user)}
-      {categorias ? (
-        <>
-          <Header></Header>
-          <Section_1></Section_1>
-          <Section_2 categorias={categorias}></Section_2>
-          <Productos_Destacados></Productos_Destacados>
-        </>
-      ) : null}
+      <Header></Header>
+      <Section_1></Section_1>
+      <Section_2 categorias={categorias}></Section_2>
+      <Productos_Destacados></Productos_Destacados>
     </div>
   );
 }
