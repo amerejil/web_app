@@ -10,7 +10,7 @@ import {
   getProductsSubcategorieApi,
   getTotalProductsCategorieApi,
 } from "../../Api/Categorias";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Tab, Loader } from "semantic-ui-react";
 import Pagination from "../../components/Pagination";
 import PaginationSubcategoria from "../../components/PaginationSubcategoria";
@@ -20,16 +20,17 @@ const limitPerPage = 6;
 
 export default function Categorias() {
   const [indexsubc, setindexsubc] = useState(1);
-  const [totalproducts, settotalproducts] = useState(null);
+
   const { query } = useRouter();
-  const [subcategorias, setsubcategorias] = useState(null);
-  const [categorias, setcategorias] = useState(null);
+
   const [products, setproducts] = useState(null);
   const [productsSubc, setproductsSubc] = useState([]);
   const [activePage, setactivePage] = useState(1);
   const [totalproductsubc, settotalproductsubc] = useState(null);
 
   const [activepagesArry, setactivepagesArry] = useState([]);
+
+  const [dataFetch, setdataFetch] = useState(null);
 
   const getStartItem = () => {
     const currentPages = parseInt(activePage);
@@ -53,19 +54,25 @@ export default function Categorias() {
         const url = `${BASE_PATH}/categorias?url=${query.categorias}`;
         const response = await fetch(url);
         const result = await response.json();
-        setcategorias(result[0]);
+
         const r = await fetch(`${BASE_PATH}/subcategorias`);
         const subc = await r.json();
-        setsubcategorias(subc);
+
         const countTotalProducts = await getTotalProductsCategorieApi(
           query.categorias
         );
         const initialState = subc.map(() => 1);
+        const data = {
+          categorias: result[0],
+          subcategorias: subc,
+          initialState,
+          totalproducts: countTotalProducts,
+        };
+        setdataFetch(data);
         setactivepagesArry(initialState);
-        settotalproducts(countTotalProducts);
       })();
     }
-  }, []);
+  }, [query.categorias]);
 
   useEffect(() => {
     if (query?.categorias) {
@@ -81,11 +88,11 @@ export default function Categorias() {
   }, [activePage, query.categorias]);
 
   useEffect(() => {
-    if (subcategorias && indexsubc > 0) {
+    if (dataFetch?.subcategorias && indexsubc > 0) {
       (async () => {
         const result = await getProductsSubcategorieApi(
-          categorias.url,
-          subcategorias[indexsubc - 1].url,
+          dataFetch.categorias.url,
+          dataFetch.subcategorias[indexsubc - 1].url,
           limitPerPage,
           getStartItemSubc(indexsubc - 1)
         );
@@ -96,11 +103,11 @@ export default function Categorias() {
   }, [activepagesArry, indexsubc]);
 
   useEffect(() => {
-    if (subcategorias && indexsubc > 0) {
+    if (dataFetch?.subcategorias && indexsubc > 0) {
       (async () => {
         const count = await getTotalProductsSubCategorieApi(
-          categorias.url,
-          subcategorias[indexsubc - 1].url
+          dataFetch.categorias.url,
+          dataFetch.subcategorias[indexsubc - 1].url
         );
         settotalproductsubc(count);
       })();
@@ -114,23 +121,24 @@ export default function Categorias() {
 
   let pane_categoria = [];
   let panes_subcategorias = [];
-  if (categorias) {
+  let panes = [];
+  if (dataFetch?.categorias) {
     pane_categoria = [
       {
-        menuItem: `${categorias.title}`,
+        menuItem: `${dataFetch.categorias.title}`,
         render: () => (
           <Tab.Pane>
             {!products && <Loader active> Cargando productos</Loader>}
             {products && size(products) === 0 && (
-              <div>No hay más {categorias.title}</div>
+              <div>No hay más {dataFetch.categorias.title}</div>
             )}
             {size(products) > 0 && (
               <ListProducts products={products}></ListProducts>
             )}
-            {totalproducts ? (
+            {dataFetch.totalproducts ? (
               <Pagination
                 setactivePage={setactivePage}
-                totalproducts={totalproducts}
+                totalproducts={dataFetch.totalproducts}
                 page={activePage}
                 limitPerPage={limitPerPage}
               ></Pagination>
@@ -141,15 +149,15 @@ export default function Categorias() {
     ];
   }
 
-  if (subcategorias) {
-    panes_subcategorias = subcategorias.map((item, i) => {
+  if (dataFetch?.subcategorias) {
+    panes_subcategorias = dataFetch.subcategorias.map((item, i) => {
       return {
         menuItem: `${item.title}`,
         render: () => (
           <Tab.Pane>
             {!productsSubc && <Loader active> Cargando productos</Loader>}
             {productsSubc && size(productsSubc) === 0 && (
-              <div>No hay más {categorias.title}</div>
+              <div>No hay más {dataFetch.categorias.title}</div>
             )}
             <ListProducts products={productsSubc}></ListProducts>
             <PaginationSubcategoria
@@ -163,8 +171,9 @@ export default function Categorias() {
         ),
       };
     });
+    panes = [...pane_categoria, ...panes_subcategorias];
   }
-  const panes = [...pane_categoria, ...panes_subcategorias];
+
   /*console.log("hola query", query.categorias);
   console.log("Hola categoria", categorias);
   console.log("hola productos", products);
@@ -173,7 +182,7 @@ export default function Categorias() {
   console.log("hola valores iniciales", activepagesArry);
   console.log("hola panes subcategorias", panes_subcategorias);
   const panes = [...pane_categoria, ...panes_subcategorias];*/
-  if (!products) return null;
+  if (!products && !dataFetch) return null;
   return (
     <div className="page-categorias">
       <Header></Header>
