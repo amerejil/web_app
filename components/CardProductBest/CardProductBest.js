@@ -4,7 +4,11 @@ export default function CardProductBest() {
   return (
     <div className="card_productB">
       <div className="card_product_absolute">
-        <Image className="imagen" src="/Img2_.png" alt=""></Image>
+        <Image
+          className="imagen"
+          src="https://lx-1992.s3.us-east-2.amazonaws.com/small_Img2_e0f1f70a33.png"
+          alt=""
+        ></Image>
         <div className="card__precis">
           <div className="card__icon">
             <Icon className="heart outline"></Icon>

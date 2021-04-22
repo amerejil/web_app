@@ -19,14 +19,14 @@ export default function Home() {
     <div className="home">
       {!categorias && <Loader active> Cargando página</Loader>}
 
-      {categorias ? (
+      {categorias && (
         <>
           <Header></Header>
           <Section_1></Section_1>
           <Section_2 categorias={categorias}></Section_2>
           <Productos_Destacados></Productos_Destacados>
         </>
-      ) : null}
+      )}
     </div>
   );
 }

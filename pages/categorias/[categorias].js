@@ -182,19 +182,30 @@ export default function Categorias() {
   console.log("hola valores iniciales", activepagesArry);
   console.log("hola panes subcategorias", panes_subcategorias);
   const panes = [...pane_categoria, ...panes_subcategorias];*/
-  if (!products && !dataFetch) return null;
+
   return (
     <div className="page-categorias">
-      <Header></Header>
-      <Tab
-        defaultActiveIndex={0}
-        menu={{ fluid: true, vertical: true, tabular: false, pointing: true }}
-        className="tabs-categorias"
-        panes={panes}
-        onTabChange={(_, event) => {
-          setindexsubc(event.activeIndex);
-        }}
-      ></Tab>
+      {!dataFetch && <Loader active> Cargando página</Loader>}
+      {dataFetch && (
+        <>
+          <Header></Header>
+
+          <Tab
+            defaultActiveIndex={0}
+            menu={{
+              fluid: true,
+              vertical: true,
+              tabular: false,
+              pointing: true,
+            }}
+            className="tabs-categorias"
+            panes={panes}
+            onTabChange={(_, event) => {
+              setindexsubc(event.activeIndex);
+            }}
+          ></Tab>
+        </>
+      )}
     </div>
   );
 }
