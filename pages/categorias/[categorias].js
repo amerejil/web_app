@@ -16,6 +16,7 @@ import Pagination from "../../components/Pagination";
 import PaginationSubcategoria from "../../components/PaginationSubcategoria";
 
 import ListProducts from "../../components/ListProducts";
+import ListProductsSubc from "../../components/ListProductsSubc";
 const limitPerPage = 6;
 
 export default function Categorias() {
@@ -133,7 +134,10 @@ export default function Categorias() {
               <div>No hay más {dataFetch.categorias.title}</div>
             )}
             {size(products) > 0 && (
-              <ListProducts products={products}></ListProducts>
+              <ListProducts
+                className="categoria"
+                products={products}
+              ></ListProducts>
             )}
             {dataFetch.totalproducts ? (
               <Pagination
@@ -159,7 +163,10 @@ export default function Categorias() {
             {productsSubc && size(productsSubc) === 0 && (
               <div>No hay más {dataFetch.categorias.title}</div>
             )}
-            <ListProducts products={productsSubc}></ListProducts>
+            <ListProductsSubc
+              className="subcategoria"
+              products={productsSubc}
+            ></ListProductsSubc>
             <PaginationSubcategoria
               activepagesArry={activepagesArry}
               setactivepagesArry={setactivepagesArry}

@@ -20,9 +20,10 @@
       margin: auto;
     }
     .card__precis {
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: repeat(3, auto);
       align-items: center;
+      justify-content: space-evenly;
       transition: 0.5s;
       .card_price {
         padding: 3%;
@@ -44,14 +45,46 @@
       }
 
       .card__icon {
-        cursor: pointer;
-        padding: 0% 6% 0% 6%;
-        display: block;
+        position: relative;
+
         font-size: 1.5rem;
+
         color: #0aa3a8;
-        &:hover {
+
+        .heart.outline.pink_ {
+          position: relative;
+
+          color: #f51bad !important ;
+        }
+        .heart.outline {
+          position: relative;
+          transform: scale(1);
+          z-index: 2;
+          color: #0aa3a8;
+
+          &:hover {
+            color: #f51bad;
+          }
+        }
+        .heart {
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform: scale(0);
+          color: #f51bad;
+          transition: 0.4s ease-in-out;
+        }
+        .heart.fill {
+          position: absolute;
+          top: 0;
+          left: 0;
+          transform: scale(1);
           color: #f51bad;
         }
+      }
+      i {
+        cursor: pointer;
+        margin: 0%;
       }
     }
   }

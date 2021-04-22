@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import BasicModal from "../Modal/BasicModal";
 import { Icon } from "semantic-ui-react";
 import Link from "next/link";
@@ -65,8 +65,7 @@ export default function Header() {
               <li className="nav-item">
                 <Link href="/account">
                   <a className="nav-links">
-                    <Icon name="user outline" />
-                    {user.name} {user.lastname}
+                    <Icon className="user outline" />
                   </a>
                 </Link>
               </li>

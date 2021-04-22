@@ -11,7 +11,7 @@ import {
   breakpointUpSm,
 } from "../../Utils/breakpoint";
 
-export default function ListProducts(props) {
+export default function ListProductsSubc(props) {
   const { products, className } = props;
   const { width } = useWindowSize();
 
