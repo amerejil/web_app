@@ -1,5 +1,5 @@
 .summary-cart {
-  padding: 10px;
+  padding: 0%;
   .title {
     width: max-content;
     background-color: black;
@@ -16,12 +16,11 @@
     td {
       text-align: center !important;
       &:first-of-type {
-        display: flex !important;
         align-items: center;
 
         img {
-          height: 100px;
-          padding-right: 20px;
+          margin: auto;
+          width: 100px;
         }
       }
     }
@@ -39,6 +38,23 @@
     }
     .clear {
       border-bottom: 1px solid whitesmoke !important;
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .summary-cart {
+    font-size: 0.8rem !important;
+    &_product {
+      td {
+        &:first-of-type {
+          align-items: center;
+
+          img {
+            margin: auto;
+            width: 80px;
+          }
+        }
+      }
     }
   }
 }

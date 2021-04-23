@@ -4,10 +4,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "semantic-ui-css/semantic.min.css";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { getCategoriasApi } from "../Api/Categorias";
 import jwtDecode from "jwt-decode";
 import Cartcontext from "../context/CartContext";
 import AuthContext from "../context/AuthContext";
 import UserContext from "../context/UserContext";
+import CategoriesContext from "../context/CategoriesContext";
 import { getMeaApi } from "../Api/user";
 import { setToken, getToken, removeToken } from "../Api/token";
 import "react-toastify/dist/ReactToastify.css";
@@ -21,6 +23,7 @@ import {
 
 export default function MyApp({ Component, pageProps }) {
   const [totalProductsCart, settotalProductsCart] = useState(0);
+  const [categorias, setcategorias] = useState(null);
   const [reloadCart, setreloadCart] = useState(false);
   const [auth, setauth] = useState(undefined);
   const [reloadUser, setReloadUser] = useState(false);
@@ -87,6 +90,13 @@ export default function MyApp({ Component, pageProps }) {
     })();
   }, [auth]);
 
+  useEffect(() => {
+    (async () => {
+      const response = await getCategoriasApi();
+      setcategorias(response);
+    })();
+  }, []);
+
   const cartData = useMemo(
     () => ({
       prouductsCart: totalProductsCart,
@@ -97,27 +107,30 @@ export default function MyApp({ Component, pageProps }) {
     }),
     [auth, totalProductsCart]
   );
-
+  const categoriesData = useMemo(() => ({ categorias }), [categorias]);
+  console.log(categorias);
   const userLogin = useMemo(() => ({ user: user }), [user]);
   if (auth === undefined) return null;
   return (
     <AuthContext.Provider value={authData}>
       <UserContext.Provider value={userLogin}>
-        <Cartcontext.Provider value={cartData}>
-          <title>El porcelanito</title>
-          <Component {...pageProps} />
-          <ToastContainer
-            position="top-right"
-            autoClose={5000}
-            hideProgressBar
-            newestOnTop
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss={false}
-            draggable
-            pauseOnHover
-          />
-        </Cartcontext.Provider>
+        <CategoriesContext.Provider value={categoriesData}>
+          <Cartcontext.Provider value={cartData}>
+            <title>El porcelanito</title>
+            <Component {...pageProps} />
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar
+              newestOnTop
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss={false}
+              draggable
+              pauseOnHover
+            />
+          </Cartcontext.Provider>
+        </CategoriesContext.Provider>
       </UserContext.Provider>
     </AuthContext.Provider>
   );

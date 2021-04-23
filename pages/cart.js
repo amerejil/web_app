@@ -2,6 +2,8 @@ import { getProductByUrlApi } from "../Api/product";
 import React, { useState, useEffect } from "react";
 import useCart from "../hooks/useCart";
 import Sumary from "../components/Cart/Summary";
+import Header from "../components/header";
+import useCategories from "../hooks/useCategories";
 
 export default function cart() {
   const { getProductsCart } = useCart();
@@ -9,11 +11,17 @@ export default function cart() {
   return !products ? <EmptyCart /> : <FullCart products={products} />;
 }
 function EmptyCart() {
-  <></>;
-  return <h2>No hay productos en el carrito</h2>;
+  const { categorias } = useCategories();
+  return (
+    <>
+      <Header categorias={categorias}></Header>
+      <h2>No hay productos en el carrito</h2>
+    </>
+  );
 }
 
 function FullCart(props) {
+  const { categorias } = useCategories();
   const { products } = props;
   const [productsData, setproductsData] = useState(null);
   const [reloadCart, setreloadCart] = useState(false);
@@ -31,10 +39,13 @@ function FullCart(props) {
   }, [reloadCart]);
 
   return (
-    <Sumary
-      products={productsData}
-      reloadCart={reloadCart}
-      setreloadCart={setreloadCart}
-    ></Sumary>
+    <>
+      <Header categorias={categorias}></Header>
+      <Sumary
+        products={productsData}
+        reloadCart={reloadCart}
+        setreloadCart={setreloadCart}
+      ></Sumary>
+    </>
   );
 }

@@ -7,8 +7,10 @@ import Auth from "../../components/Auth";
 import useAuth from "../../hooks/useAuth";
 import useCart from "../../hooks/useCart";
 import useUser from "../../hooks/useUser";
-
-export default function Header() {
+import Dropdown from "../Dropdown";
+export default function Header(props) {
+  const { categorias } = props;
+  const [dropdown, setDropdown] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [titleModal, settitleModal] = useState("Iniciar Sesión");
   const onShowModal = () => setShowModal(true);
@@ -17,6 +19,23 @@ export default function Header() {
   const { user } = useUser();
   const { auth, logout } = useAuth();
   const { prouductsCart } = useCart();
+
+  const onMouseEnter = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(true);
+    }
+  };
+
+  const onMouseLeave = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(false);
+    } else {
+      setDropdown(false);
+    }
+  };
+
   const handleClick = () => {
     setclick(!click);
   };
@@ -52,10 +71,15 @@ export default function Header() {
             <li className="nav-item">
               <Search></Search>
             </li>
-            <li className="nav-item">
+            <li
+              className="nav-item"
+              onMouseEnter={onMouseEnter}
+              onMouseLeave={onMouseLeave}
+            >
               <a href="#sect-2" onClick={closeMobileMenu} className="nav-links">
                 Categorías
               </a>
+              {dropdown && <Dropdown categorias={categorias} />}
             </li>
             <li className="nav-item">
               <a href="#sect-3" onClick={closeMobileMenu} className="nav-links">
@@ -94,12 +118,14 @@ export default function Header() {
             )}
 
             <li className="nav-item">
-              <a href="/cart" className="nav-links">
-                <Icon className="cart"></Icon>
-                {prouductsCart > 0 && (
-                  <div className="count-cart">{prouductsCart}</div>
-                )}
-              </a>
+              <Link href="/cart">
+                <a className="nav-links">
+                  <Icon className="cart"></Icon>
+                  {prouductsCart > 0 && (
+                    <div className="count-cart">{prouductsCart}</div>
+                  )}
+                </a>
+              </Link>
             </li>
           </ul>
         </div>

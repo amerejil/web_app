@@ -25,7 +25,7 @@ export default function Summary(props) {
     <div className="summary-cart">
       <div className="title">Resumen del carrito</div>
       <div className="data">
-        <Table celled structured>
+        <Table celled structured unstackable="true">
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Productos</Table.HeaderCell>
@@ -37,7 +37,7 @@ export default function Summary(props) {
           <Table.Body>
             {map(products, (product) => (
               <Table.Row key={product.id} className="summary-cart_product">
-                <Table.Cell>
+                <Table.Cell verticalAlign="top">
                   <Icon
                     name="close"
                     link
@@ -55,8 +55,7 @@ export default function Summary(props) {
               </Table.Row>
             ))}
             <Table.Row className="summary-cart_resume">
-              <Table.Cell className="clear"></Table.Cell>
-              <Table.Cell colSpan="2">Total:</Table.Cell>
+              <Table.Cell colSpan="3">Total:</Table.Cell>
               <Table.Cell className="total-price">
                 ${totalPrice.toFixed(2)}
               </Table.Cell>

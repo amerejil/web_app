@@ -17,9 +17,12 @@ import PaginationSubcategoria from "../../components/PaginationSubcategoria";
 
 import ListProducts from "../../components/ListProducts";
 import ListProductsSubc from "../../components/ListProductsSubc";
+import useCategories from "../../hooks/useCategories";
 const limitPerPage = 6;
 
 export default function Categorias() {
+  const { categorias } = useCategories();
+
   const [indexsubc, setindexsubc] = useState(1);
 
   const { query } = useRouter();
@@ -195,7 +198,7 @@ export default function Categorias() {
       {!dataFetch && <Loader active> Cargando página</Loader>}
       {dataFetch && (
         <>
-          <Header></Header>
+          <Header categorias={categorias}></Header>
 
           <Tab
             defaultActiveIndex={0}

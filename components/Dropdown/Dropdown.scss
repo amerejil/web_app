@@ -1,0 +1,19 @@
+.dropdown-menu {
+  background: rgb(95, 61, 139);
+  font-size: 1.1rem !important;
+  width: max-content;
+  position: absolute;
+  top: 80px;
+  left: 0px;
+  list-style: none;
+
+  .nav-links:hover {
+    background-color: #fff;
+    color: #242424 !important;
+    border-bottom: 0 !important;
+    border-radius: 0;
+  }
+}
+.dropdown-menu.clicked {
+  display: none;
+}

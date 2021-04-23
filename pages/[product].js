@@ -3,12 +3,10 @@ import { useRouter } from "next/router";
 import Header from "../components/header";
 import { getProductByUrlApi } from "../Api/product";
 import HeaderProduct from "../components/Product/HeaderProduct";
-import {
-  getCategoriasApi,
-  getProductsCategorieApi,
-  getTotalProductsCategorieApi,
-} from "../Api/Categorias";
+
+import useCategories from "../hooks/useCategories";
 export default function Product() {
+  const { categorias } = useCategories();
   const [product, setproduct] = useState(null);
   const { query } = useRouter();
 
@@ -23,9 +21,8 @@ export default function Product() {
     <div className="page-product">
       {product && (
         <>
-          <Header></Header>
+          <Header categorias={categorias}></Header>
           <HeaderProduct product={product}></HeaderProduct>
-          <div>Hola</div>
         </>
       )}
     </div>
