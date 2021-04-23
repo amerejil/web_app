@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
+import { toast } from "react-toastify";
 import { Icon, Image } from "semantic-ui-react";
 import useAuth from "../../hooks/useAuth";
 import useCart from "../../hooks/useCart";
@@ -19,7 +20,7 @@ export default function CardProduct(props) {
   const { addProductCart, removeProductCart } = useCart();
   const cart = getProductsCart();
   const productFound = includes(cart, product.url);
-  console.log("hola", productFound);
+
   useEffect(() => {
     if (auth) {
       (async () => {
@@ -40,7 +41,7 @@ export default function CardProduct(props) {
       await addFavoriteApi(auth.idUser, product.id, logout);
       setreloadFavorite(true);
     } else {
-      console.log("hola");
+      toast.warning("Inicia sesión para agregar a favoritos");
     }
   };
   const deleteFavorite = async () => {
@@ -59,8 +60,9 @@ export default function CardProduct(props) {
         <Link href={`/${product.url}`}>
           <a>
             <Image
+              loading="lazy"
               className="imagen"
-              src={product.imagen.formats.small.url}
+              src={product.imagen.formats.thumbnail.url}
               alt={product.title}
             ></Image>
           </a>

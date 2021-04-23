@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import BasicModal from "../Modal/BasicModal";
-import { Icon } from "semantic-ui-react";
+import { Icon, Label } from "semantic-ui-react";
 import Link from "next/link";
 import Search from "../Search";
 import Auth from "../../components/Auth";
 import useAuth from "../../hooks/useAuth";
+import useCart from "../../hooks/useCart";
 import useUser from "../../hooks/useUser";
 
 export default function Header() {
@@ -15,6 +16,7 @@ export default function Header() {
   const [click, setclick] = useState(false);
   const { user } = useUser();
   const { auth, logout } = useAuth();
+  const { prouductsCart } = useCart();
   const handleClick = () => {
     setclick(!click);
   };
@@ -92,8 +94,11 @@ export default function Header() {
             )}
 
             <li className="nav-item">
-              <a href="/" className="nav-links">
+              <a href="/cart" className="nav-links">
                 <Icon className="cart"></Icon>
+                {prouductsCart > 0 && (
+                  <div className="count-cart">{prouductsCart}</div>
+                )}
               </a>
             </li>
           </ul>

@@ -27,7 +27,7 @@ export default function CarouselScreenshots(props) {
   return (
     <Slider {...settings}>
       <div className="imagen">
-        <Image src="/banner_1.jpeg" key="1" alt="1"></Image>
+        <Image loading="lazy" src="/banner_1.jpeg" key="1" alt="1"></Image>
       </div>
       <div className="imagen">
         <Image src="/banner_2.jpeg" key="2" alt="2"></Image>

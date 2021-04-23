@@ -20,13 +20,13 @@
       margin: auto;
     }
     .card__precis {
+      padding: 2%;
       display: grid;
       grid-template-columns: repeat(3, auto);
       align-items: center;
       justify-content: space-evenly;
       transition: 0.5s;
       .card_price {
-        padding: 3%;
         .card__preci--now {
           font-size: 1.5rem;
           color: #05665a;

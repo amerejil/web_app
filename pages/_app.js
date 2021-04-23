@@ -26,7 +26,7 @@ export default function MyApp({ Component, pageProps }) {
   const [reloadUser, setReloadUser] = useState(false);
   const router = useRouter();
   const [user, setuser] = useState(undefined);
-  console.log(auth);
+
   useEffect(() => {
     const token = getToken();
     if (token) {

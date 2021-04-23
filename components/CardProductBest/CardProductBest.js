@@ -5,8 +5,9 @@ export default function CardProductBest() {
     <div className="card_productB">
       <div className="card_product_absolute">
         <Image
+          loading="lazy"
           className="imagen"
-          src="https://lx-1992.s3.us-east-2.amazonaws.com/small_Img2_e0f1f70a33.png"
+          src="https://lx-1992.s3.us-east-2.amazonaws.com/thumbnail_Img2_07c97e80d7.png"
           alt=""
         ></Image>
         <div className="card__precis">
