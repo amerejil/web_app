@@ -5,7 +5,7 @@ import {
   isFavoriteApi,
   addFavoriteApi,
   deleteFavoriteApi,
-} from "../../../api/favorite";
+} from "../../../Api/favorite";
 import useAuth from "../../../hooks/useAuth";
 import classNames from "classnames";
 import useCart from "../../../hooks/useCart";
