@@ -16,10 +16,10 @@ export default function HeaderProduct(props) {
   const { imagen, title } = product;
   return (
     <Grid className="header-game">
-      <Grid.Column mobile={16} tablet={6} computer={5}>
+      <Grid.Column mobile={16} tablet={6} computer={7}>
         <Image src={imagen.url} alt={title} fluid></Image>
       </Grid.Column>
-      <GridColumn mobile={16} tablet={10} computer={11}>
+      <GridColumn mobile={16} tablet={10} computer={9}>
         <Info product={product}></Info>
       </GridColumn>
     </Grid>
@@ -73,7 +73,17 @@ function Info(props) {
         ></Icon>
       </div>
       <div className="header-game_delivery">Entrega en 24/48 horas</div>
-      <div className="header-game_summary"></div>
+      <div className="header-game_summary">
+        <p>
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum."
+        </p>
+      </div>
       <div className="header-game_buy">
         <div className="header-game_buy-price">
           <p>Precio de venta al público: ${product.price}</p>

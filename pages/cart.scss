@@ -1,3 +1,11 @@
-.empy-cart {
-  text-align: center;
+.empty-cart {
+  height: 100vh;
+  background: rgb(252, 252, 252);
+  h2 {
+    text-align: center;
+  }
+}
+.full-cart {
+  height: 100vh;
+  background: rgb(252, 252, 252);
 }

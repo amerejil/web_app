@@ -13,10 +13,10 @@ export default function cart() {
 function EmptyCart() {
   const { categorias } = useCategories();
   return (
-    <>
+    <div className="empty-cart">
       <Header categorias={categorias}></Header>
       <h2>No hay productos en el carrito</h2>
-    </>
+    </div>
   );
 }
 
@@ -39,13 +39,13 @@ function FullCart(props) {
   }, [reloadCart]);
 
   return (
-    <>
+    <div className="full-cart">
       <Header categorias={categorias}></Header>
       <Sumary
         products={productsData}
         reloadCart={reloadCart}
         setreloadCart={setreloadCart}
       ></Sumary>
-    </>
+    </div>
   );
 }

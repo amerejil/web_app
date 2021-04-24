@@ -1,6 +1,8 @@
 .summary-cart {
+  padding-top: 1rem !important;
   padding: 0%;
   .title {
+    margin-left: 1rem !important;
     width: max-content;
     border-radius: 1.2rem 1.2rem 0 0;
     background-color: #202040;
@@ -9,9 +11,8 @@
     font-weight: bold;
   }
   .data {
-    background-color: whitesmoke;
-    box-shadow: 1px 1px 2px 0 rgba(0, 0, 0, 0.1);
-    padding: 15px;
+    background-color: white;
+    margin: 0 1rem 0 1rem;
   }
   &_product {
     td {
@@ -35,6 +36,7 @@
     td {
       &:first-of-type {
         text-align: center !important;
+        font-weight: bold;
         font-size: 1.3rem;
       }
       &:last-of-type {
@@ -45,9 +47,6 @@
       color: purple;
       font-weight: bold;
       font-size: 1.3rem;
-    }
-    .clear {
-      border-bottom: 1px solid whitesmoke !important;
     }
   }
 }
