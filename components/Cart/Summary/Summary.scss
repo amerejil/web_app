@@ -24,6 +24,7 @@
           position: absolute !important;
           top: 3%;
           right: 3%;
+          z-index: 2;
         }
         img {
           margin: auto;
@@ -53,6 +54,9 @@
 @media screen and (max-width: 768px) {
   .summary-cart {
     font-size: 0.8rem !important;
+    .title {
+      border-radius: 0.9rem 0.9rem 0 0;
+    }
     &_product {
       td {
         &:first-of-type {
