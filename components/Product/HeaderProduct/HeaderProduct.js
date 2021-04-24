@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Image, Icon, Button, GridColumn } from "semantic-ui-react";
+import { toast } from "react-toastify";
 import { size } from "lodash";
 import {
   isFavoriteApi,
@@ -48,6 +49,8 @@ function Info(props) {
     if (auth) {
       await addFavoriteApi(auth.idUser, product.id, logout);
       setreloadFavorite(true);
+    } else {
+      toast.warning("Inicia sesión para agregar a favoritos");
     }
   };
   const deleteFavorite = async () => {

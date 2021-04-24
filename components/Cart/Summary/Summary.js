@@ -39,7 +39,8 @@ export default function Summary(props) {
               <Table.Row key={product.id} className="summary-cart_product">
                 <Table.Cell verticalAlign="top">
                   <Icon
-                    name="close"
+                    circular
+                    name="trash"
                     link
                     onClick={() => removeProduct(product.url)}
                   ></Icon>
@@ -51,7 +52,7 @@ export default function Summary(props) {
                 </Table.Cell>
                 <Table.Cell>{product.categoria.title}</Table.Cell>
                 <Table.Cell>Inmediata</Table.Cell>
-                <Table.Cell>{product.price}</Table.Cell>
+                <Table.Cell>${product.price}</Table.Cell>
               </Table.Row>
             ))}
             <Table.Row className="summary-cart_resume">

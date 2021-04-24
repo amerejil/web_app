@@ -2,10 +2,11 @@
   padding: 0%;
   .title {
     width: max-content;
-    background-color: black;
+    border-radius: 1.2rem 1.2rem 0 0;
+    background-color: #202040;
     color: white;
-    padding: 5px 10px;
-    border-radius: 5px 5px 0 0;
+    padding: 1% 1.2%;
+    font-weight: bold;
   }
   .data {
     background-color: whitesmoke;
@@ -17,7 +18,12 @@
       text-align: center !important;
       &:first-of-type {
         align-items: center;
-
+        position: relative !important;
+        i {
+          position: absolute !important;
+          top: 3%;
+          right: 3%;
+        }
         img {
           margin: auto;
           width: 100px;
@@ -27,6 +33,10 @@
   }
   &_resume {
     td {
+      &:first-of-type {
+        text-align: center !important;
+        font-size: 1.3rem;
+      }
       &:last-of-type {
         text-align: center !important;
       }
@@ -34,7 +44,7 @@
     .total-price {
       color: purple;
       font-weight: bold;
-      font-size: 20px;
+      font-size: 1.3rem;
     }
     .clear {
       border-bottom: 1px solid whitesmoke !important;

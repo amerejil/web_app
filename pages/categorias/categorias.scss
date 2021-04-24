@@ -5,6 +5,10 @@
       margin: 0 !important;
       .four.wide.column {
         width: 20% !important;
+        .ui.menu {
+          position: sticky;
+          top: calc(80px + 1rem);
+        }
       }
       .stretched.twelve.wide.column {
         width: 80% !important;

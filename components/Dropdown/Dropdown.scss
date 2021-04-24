@@ -1,4 +1,5 @@
 .dropdown-menu {
+  font-weight: 520;
   background: rgb(95, 61, 139);
   font-size: 1.1rem !important;
   width: max-content;
@@ -7,6 +8,10 @@
   left: 0px;
   list-style: none;
 
+  .nav-links {
+    padding-top: 7% !important;
+    padding-bottom: 7% !important;
+  }
   .nav-links:hover {
     background-color: #fff;
     color: #242424 !important;
