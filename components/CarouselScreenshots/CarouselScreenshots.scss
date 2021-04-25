@@ -1,7 +1,6 @@
 .carousel-screenshots {
   .slick-slide {
     img {
-      object-fit: cover;
       height: 380px;
       width: 100%;
     }
@@ -53,7 +52,7 @@
   .carousel-screenshots {
     .slick-slide {
       img {
-        object-fit: cover;
+        object-fit: fill;
         height: 200px;
       }
     }
@@ -63,7 +62,7 @@
   .carousel-screenshots {
     .slick-slide {
       img {
-        object-fit: cover;
+        object-fit: fill;
         height: 220px;
       }
     }
@@ -74,7 +73,7 @@
   .carousel-screenshots {
     .slick-slide {
       img {
-        object-fit: cover;
+        object-fit: fill;
         height: 280px;
       }
     }
@@ -84,7 +83,7 @@
   .carousel-screenshots {
     .slick-slide {
       img {
-        object-fit: cover;
+        object-fit: fill;
         height: 380px;
       }
     }

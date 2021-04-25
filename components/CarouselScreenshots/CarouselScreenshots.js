@@ -23,7 +23,7 @@ export default function CarouselScreenshots(props) {
     <Slider {...settings}>
       {map(banners.imagen, (imagen) => (
         <div key="imagen._id" className="imagen">
-          <Image loading="eager" src={imagen.url} key="1" alt="1"></Image>
+          <Image loading="lazy" src={imagen.url} key="1" alt="1"></Image>
         </div>
       ))}
     </Slider>
