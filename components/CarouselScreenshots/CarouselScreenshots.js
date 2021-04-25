@@ -19,16 +19,11 @@ const settings = {
 export default function CarouselScreenshots(props) {
   const { banners } = props;
 
-  const openImagen = (url) => {
-    seturlImage(url);
-    setshowModal(true);
-  };
-
   return (
     <Slider {...settings}>
       {map(banners.imagen, (imagen) => (
         <div key="imagen._id" className="imagen">
-          <img loading="eager" src={imagen.url} key="1" alt="1"></img>
+          <Image loading="eager" src={imagen.url} key="1" alt="1"></Image>
         </div>
       ))}
     </Slider>

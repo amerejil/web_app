@@ -1,14 +1,8 @@
 .carousel-screenshots {
-  width: 100%;
   .slick-slide {
-    .imagen {
-      width: 100%;
-      display: flex !important;
-      justify-content: center;
-      outline: none;
-    }
     img {
-      min-height: 200px;
+      object-fit: cover;
+      height: 380px;
       width: 100%;
     }
 
@@ -43,5 +37,15 @@
     }
   }
   .slick-dots {
+  }
+}
+@media only screen and (max-width: 768px) {
+  .carousel-screenshots {
+    .slick-slide {
+      img {
+        object-fit: cover;
+        height: 200px;
+      }
+    }
   }
 }

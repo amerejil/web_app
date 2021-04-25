@@ -1,4 +1,10 @@
 .section-container {
+  height: 380px;
   scroll-margin-top: 110px;
   background: white;
+}
+@media only screen and (max-width: 768px) {
+  .section-container {
+    height: 200px;
+  }
 }
