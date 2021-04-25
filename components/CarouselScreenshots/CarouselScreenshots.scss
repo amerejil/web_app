@@ -39,12 +39,53 @@
   .slick-dots {
   }
 }
-@media only screen and (max-width: 768px) {
+@media screen and (max-width: 600px) {
   .carousel-screenshots {
     .slick-slide {
       img {
         object-fit: cover;
         height: 200px;
+      }
+    }
+  }
+}
+@media screen and (min-width: 600px) {
+  .carousel-screenshots {
+    .slick-slide {
+      img {
+        object-fit: cover;
+        height: 200px;
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .carousel-screenshots {
+    .slick-slide {
+      img {
+        object-fit: cover;
+        height: 220px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .carousel-screenshots {
+    .slick-slide {
+      img {
+        object-fit: cover;
+        height: 280px;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1200px) {
+  .carousel-screenshots {
+    .slick-slide {
+      img {
+        object-fit: cover;
+        height: 380px;
       }
     }
   }
