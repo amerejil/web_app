@@ -19,7 +19,7 @@ export default function CardProduct(props) {
   const { auth, logout } = useAuth();
   const { addProductCart, removeProductCart } = useCart();
   const cart = getProductsCart();
-  const productFound = includes(cart, product.url);
+  const productFound = cart?.filter((item) => item.product === product.url);
 
   useEffect(() => {
     if (auth) {
@@ -83,9 +83,9 @@ export default function CardProduct(props) {
           </div>
           <div className="card__icon cart">
             <Icon
-              className={productFound ? "cart pink" : "cart"}
+              className={productFound?.length > 0 ? "cart pink" : "cart"}
               onClick={
-                !productFound
+                !(productFound?.length > 0)
                   ? () => addProductCart(product.url)
                   : () => removeProductCart(product.url)
               }

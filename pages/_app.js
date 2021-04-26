@@ -108,7 +108,7 @@ export default function MyApp({ Component, pageProps }) {
     [auth, totalProductsCart]
   );
   const categoriesData = useMemo(() => ({ categorias }), [categorias]);
-  console.log(categorias);
+
   const userLogin = useMemo(() => ({ user: user }), [user]);
   if (auth === undefined) return null;
   return (

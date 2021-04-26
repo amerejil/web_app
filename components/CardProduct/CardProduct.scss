@@ -7,6 +7,7 @@
   border-radius: 1rem;
   margin: 1%;
   min-width: 180px;
+  height: 230px;
   width: 200px !important;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
   .card_product_absolute {
@@ -15,7 +16,7 @@
     width: 100%;
     .ui.image.imagen {
       cursor: pointer;
-      height: auto;
+      height: 160px;
       width: 160px;
       margin: auto;
     }

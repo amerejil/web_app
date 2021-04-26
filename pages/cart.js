@@ -6,9 +6,19 @@ import Header from "../components/header";
 import useCategories from "../hooks/useCategories";
 
 export default function cart() {
+  const [reloadCart, setreloadCart] = useState(false);
   const { getProductsCart } = useCart();
+  console.log("hola component cart");
   const products = getProductsCart();
-  return !products ? <EmptyCart /> : <FullCart products={products} />;
+  return !products ? (
+    <EmptyCart />
+  ) : (
+    <FullCart
+      products={products}
+      setreloadCart={setreloadCart}
+      reloadCart={reloadCart}
+    />
+  );
 }
 function EmptyCart() {
   const { categorias } = useCategories();
@@ -22,15 +32,28 @@ function EmptyCart() {
 
 function FullCart(props) {
   const { categorias } = useCategories();
-  const { products } = props;
+  const { products, reloadCart, setreloadCart } = props;
   const [productsData, setproductsData] = useState(null);
-  const [reloadCart, setreloadCart] = useState(false);
+
   const [address, setaddress] = useState(null);
+  const [initialQuantityArray, setinitialQuantityArray] = useState(null);
+  useEffect(() => {
+    const initialArray = products.map((item, index) => ({ id: index, q: 1 }));
+    setinitialQuantityArray(initialArray);
+  }, []);
+
   useEffect(() => {
     (async () => {
       const productsTemp = [];
       for await (const product of products) {
-        const data = await getProductByUrlApi(product);
+        const data = await getProductByUrlApi(product.product);
+        Object.defineProperty(data, "quantity", {
+          value: product.quantity,
+          writable: true,
+          enumerable: true,
+          configurable: true,
+        });
+
         productsTemp.push(data);
       }
       setproductsData(productsTemp);
@@ -39,13 +62,17 @@ function FullCart(props) {
   }, [reloadCart]);
 
   return (
-    <div className="full-cart">
-      <Header categorias={categorias}></Header>
-      <Sumary
-        products={productsData}
-        reloadCart={reloadCart}
-        setreloadCart={setreloadCart}
-      ></Sumary>
-    </div>
+    products && (
+      <div className="full-cart">
+        <Header categorias={categorias}></Header>
+        <Sumary
+          initialQuantityArray={initialQuantityArray}
+          setinitialQuantityArray={setinitialQuantityArray}
+          products={productsData}
+          reloadCart={reloadCart}
+          setreloadCart={setreloadCart}
+        ></Sumary>
+      </div>
+    )
   );
 }

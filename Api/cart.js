@@ -6,22 +6,27 @@ export function getProductsCart() {
   if (!cart) {
     return null;
   } else {
-    const product = cart.split(",");
+    const product = JSON.parse(cart);
+
     return product;
   }
 }
 export function addProductCart(product) {
   const cart = getProductsCart();
   if (!cart) {
-    localStorage.setItem(CART, product);
+    localStorage.setItem(
+      CART,
+      JSON.stringify([{ product: product, quantity: 1 }])
+    );
     toast.success("Producto añadido al carrito");
   } else {
-    const productFound = includes(cart, product);
-    if (productFound) {
+    const productFound = cart.filter((item) => item.product === product);
+
+    if (productFound.length > 0) {
       toast.warning("Este producto ya esta en el carrito");
     } else {
-      cart.push(product);
-      localStorage.setItem(CART, cart);
+      cart.push({ product, quantity: 1 });
+      localStorage.setItem(CART, JSON.stringify(cart));
       toast.success("Producto añadido al carrito");
     }
   }
@@ -39,10 +44,10 @@ export function countProductsCart() {
 export function removeProductCart(product) {
   const cart = getProductsCart();
   remove(cart, (item) => {
-    return item === product;
+    return item.product === product;
   });
   if (size(cart) > 0) {
-    localStorage.setItem(CART, cart);
+    localStorage.setItem(CART, JSON.stringify(cart));
   } else {
     localStorage.removeItem(CART);
   }
