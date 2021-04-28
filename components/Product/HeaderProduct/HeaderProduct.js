@@ -100,7 +100,7 @@ function Info(props) {
         </div>
         <Button
           className="header-game_buy-btn"
-          onClick={() => addProductCart(product.url)}
+          onClick={() => addProductCart(product)}
         >
           Comprar
         </Button>
