@@ -76,6 +76,9 @@ export default function Categorias() {
         setactivepagesArry(initialState);
       })();
     }
+    return () => {
+      setdataFetch(null);
+    };
   }, [query.categorias]);
 
   useEffect(() => {
