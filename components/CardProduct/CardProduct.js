@@ -19,7 +19,7 @@ export default function CardProduct(props) {
   const { auth, logout } = useAuth();
   const { addProductCart, removeProductCart } = useCart();
   const cart = getProductsCart();
-  const productFound = cart?.filter((item) => item.product === product.url);
+  const productFound = cart?.filter((item) => item.id === product.id);
 
   useEffect(() => {
     if (auth) {
@@ -62,7 +62,7 @@ export default function CardProduct(props) {
             <Image
               loading="lazy"
               className="imagen"
-              src={product.imagen.formats.thumbnail.url}
+              src={product.imagen.formats.small.url}
               alt={product.title}
             ></Image>
           </a>
@@ -86,8 +86,8 @@ export default function CardProduct(props) {
               className={productFound?.length > 0 ? "cart pink" : "cart"}
               onClick={
                 !(productFound?.length > 0)
-                  ? () => addProductCart(product.url)
-                  : () => removeProductCart(product.url)
+                  ? () => addProductCart(product)
+                  : () => removeProductCart(product)
               }
             ></Icon>
           </div>

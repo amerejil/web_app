@@ -1,11 +1,16 @@
 .empty-cart {
-  height: 100vh;
+  height: calc(100vh - 110px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: rgb(252, 252, 252);
   h2 {
+    display: flex;
+    height: fit-content !important;
+    justify-content: center;
     text-align: center;
   }
 }
 .full-cart {
-  height: 100vh;
   background: rgb(252, 252, 252);
 }

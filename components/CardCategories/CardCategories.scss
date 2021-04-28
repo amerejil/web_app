@@ -1,9 +1,9 @@
 .card-container {
   background-color: white;
   display: flex;
-  min-width: 180px;
   width: 220px;
-  height: 260px;
+  height: 250px;
+
   justify-content: center;
   align-items: center;
   border-radius: 8px;
@@ -12,20 +12,24 @@
 
   transition: 0.5s;
   .card-absolute {
-    height: auto;
-    max-width: 220px;
-    min-width: 180px;
+    width: 220px;
+    height: 250px;
+
     .imagen {
-      object-fit: contain;
+      object-fit: cover;
       border-radius: 8px 8px 0 0;
-      height: auto;
+      height: 85%;
       width: 100%;
 
       margin: auto;
     }
     h5 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 15%;
       font-size: 1.2rem;
-      margin: 2% !important;
+      margin: 0%;
       text-align: center;
       color: #0aa3a8;
     }
@@ -33,4 +37,62 @@
 }
 .card-container:hover {
   transform: scale(1.06);
+}
+
+@media screen and (max-width: 600px) {
+  .card-container {
+    width: 180px;
+    height: 210px;
+
+    .card-absolute {
+      width: 180px;
+      height: 210px;
+
+      .imagen {
+      }
+    }
+  }
+}
+@media screen and (min-width: 600px) {
+  .card-container {
+    width: 190px;
+    height: 220px;
+
+    .card-absolute {
+      width: 190px;
+      height: 220px;
+
+      .imagen {
+      }
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .card-container {
+    width: 200px;
+    height: 230px;
+
+    .card-absolute {
+      width: 200px;
+      height: 230px;
+
+      .imagen {
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .card-container {
+    width: 210px;
+    height: 240px;
+
+    .card-absolute {
+      width: 210px;
+      height: 240px;
+
+      .imagen {
+      }
+    }
+  }
 }

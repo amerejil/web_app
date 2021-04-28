@@ -28,7 +28,7 @@ export default function Summary(props) {
     <div className="summary-cart">
       <div className="title">Resumen del carrito</div>
       <div className="data">
-        <Table celled structured unstackable>
+        <Table fixed celled structured unstackable>
           <Table.Header>
             <Table.Row>
               <Table.HeaderCell>Productos</Table.HeaderCell>
@@ -46,7 +46,7 @@ export default function Summary(props) {
                       circular
                       name="trash"
                       link
-                      onClick={() => removeProduct(product.url)}
+                      onClick={() => removeProduct(product)}
                     ></Icon>
                     <Image
                       src={product.imagen.formats.thumbnail.url}
@@ -63,7 +63,9 @@ export default function Summary(props) {
                       index={index}
                     ></Quantity>
                   </Table.Cell>
-                  <Table.Cell>${product.price * product.quantity}</Table.Cell>
+                  <Table.Cell>
+                    ${(product.price * product.quantity).toFixed(2)}
+                  </Table.Cell>
                 </Table.Row>
               );
             })}

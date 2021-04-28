@@ -8,12 +8,12 @@ export default function CardCategories(props) {
     <Link href={`/categorias/${categorias.url}`}>
       <a className={`card-container ${categorias.id}`}>
         <div className="card-absolute">
-          <img
+          <Image
             loading="lazy"
             className="imagen"
             src={categorias.imagen.formats.small.url}
             alt={categorias.title}
-          ></img>
+          ></Image>
           <h5>{categorias.title}</h5>
         </div>
       </a>

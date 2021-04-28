@@ -9,7 +9,7 @@ export default function Dropdown(props) {
   return (
     <ul className={click ? "dropdown-menu clicked" : "dropdown-menu"}>
       {categorias.map((categoria) => (
-        <li>
+        <li key={categoria.id}>
           <Link href={`/categorias/${categoria.url}`}>
             <a className="nav-links">{categoria.title}</a>
           </Link>

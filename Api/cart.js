@@ -4,7 +4,7 @@ import { size, includes, remove } from "lodash";
 export function getProductsCart() {
   const cart = localStorage.getItem(CART);
   if (!cart) {
-    return null;
+    return [];
   } else {
     const product = JSON.parse(cart);
 
@@ -14,18 +14,27 @@ export function getProductsCart() {
 export function addProductCart(product) {
   const cart = getProductsCart();
   if (!cart) {
-    localStorage.setItem(
-      CART,
-      JSON.stringify([{ product: product, quantity: 1 }])
-    );
+    Object.defineProperty(product, "quantity", {
+      value: 1,
+      writable: true,
+      enumerable: true,
+      configurable: true,
+    });
+    localStorage.setItem(CART, JSON.stringify([product]));
     toast.success("Producto añadido al carrito");
   } else {
-    const productFound = cart.filter((item) => item.product === product);
-
+    const productFound = cart.filter((item) => item.id === product.id);
+    console.log(product.id);
     if (productFound.length > 0) {
       toast.warning("Este producto ya esta en el carrito");
     } else {
-      cart.push({ product, quantity: 1 });
+      Object.defineProperty(product, "quantity", {
+        value: 1,
+        writable: true,
+        enumerable: true,
+        configurable: true,
+      });
+      cart.push(product);
       localStorage.setItem(CART, JSON.stringify(cart));
       toast.success("Producto añadido al carrito");
     }
@@ -44,7 +53,7 @@ export function countProductsCart() {
 export function removeProductCart(product) {
   const cart = getProductsCart();
   remove(cart, (item) => {
-    return item.product === product;
+    return item.id === product.id;
   });
   if (size(cart) > 0) {
     localStorage.setItem(CART, JSON.stringify(cart));
