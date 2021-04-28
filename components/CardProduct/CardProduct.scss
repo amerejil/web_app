@@ -1,4 +1,5 @@
 .card_product {
+  padding: 1%;
   opacity: 0.8;
   background-color: white;
   justify-content: center;
@@ -8,7 +9,7 @@
   margin: 1%;
   height: 250px;
   width: 200px !important;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   .card__name {
     justify-content: center;
     display: flex !important;
@@ -16,13 +17,12 @@
     display: block;
     align-items: center;
     justify-content: center;
-    border-radius: 1rem 1rem 0 0;
     width: 100%;
     height: 20%;
-
+    font-size: 0.9rem;
     text-align: center;
-    background: #13a3a8;
-    color: #fff;
+
+    color: black;
     font-weight: bold;
   }
 
@@ -36,6 +36,8 @@
     transition: 0.5s;
     width: 100%;
     .ui.image.imagen {
+      padding: 1%;
+      border-radius: 1rem !important ;
       object-fit: contain;
       cursor: pointer;
       height: 77%;
@@ -53,7 +55,7 @@
       .card_price {
         .card__preci--now {
           font-size: 1.5rem;
-          color: #05665a;
+          color: black;
           display: block;
           text-align: center;
           font-weight: bold;
@@ -74,6 +76,10 @@
         font-size: 1.5rem;
 
         color: #0aa3a8;
+        &:hover {
+          color: #f51bad;
+          transition: 0.4s ease-in-out;
+        }
 
         .heart.outline.pink_ {
           position: relative;
@@ -106,6 +112,7 @@
           color: #f51bad;
         }
       }
+
       i {
         cursor: pointer;
         margin: 0%;
