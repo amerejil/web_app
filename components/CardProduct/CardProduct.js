@@ -62,7 +62,7 @@ export default function CardProduct(props) {
             <Image
               loading="lazy"
               className="imagen"
-              src={product.imagen.formats.small.url}
+              src={product.imagen.formats.thumbnail.url}
               alt={product.title}
             ></Image>
           </a>
