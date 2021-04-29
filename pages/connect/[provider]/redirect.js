@@ -1,11 +1,13 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import { BASE_PATH } from "../../../Utils/constants";
-
+import { useRouter } from "next/router";
 export default function redirect() {
+  const [isSuccess, setisSuccess] = useState(undefined);
   const { login } = useAuth();
   const router = window.location.search;
+  const r = useRouter();
   useEffect(() => {
     (async () => {
       const response = await fetch(
@@ -15,9 +17,16 @@ export default function redirect() {
       console.log(result);
       if (result?.jwt) {
         login(result.jwt);
+        setisSuccess(true);
+        r.push("/");
       }
     })();
   }, [router]);
 
-  return <div>hola </div>;
+  return (
+    <div>
+      {isSuccess === undefined ? "Espere..." : ""}{" "}
+      {isSuccess === true ? "Inicio de sesion correcto" : ""}
+    </div>
+  );
 }
