@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Icon } from "semantic-ui-react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
 import { loginApi, resetPasswordApi } from "../../../Api/user";
 import useAuth from "../../../hooks/useAuth";
+import Link from "next/link";
+import { BASE_PATH } from "../../../Utils/constants";
+
 export default function LoginForm(props) {
   const { showRegisterForm, onCloseModal } = props;
   const [loading, setloading] = useState(false);
@@ -62,6 +65,13 @@ export default function LoginForm(props) {
           <Button type="button" onClick={resetPassword}>
             ¿Has olvidado la contraseña?
           </Button>
+        </div>
+        <div>
+          <Link href={`${BASE_PATH}/connect/google`}>
+            <Button type="button">
+              <Icon name="google"></Icon>Google
+            </Button>
+          </Link>
         </div>
       </div>
     </Form>
