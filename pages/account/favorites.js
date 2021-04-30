@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { size, forEach } from "lodash";
-import { getFavoriteApi } from "../Api/favorite";
-import useAuth from "../hooks/useAuth";
-import ListProducts from "../components/ListProducts";
+import { getFavoriteApi } from "../../Api/favorite";
+import useAuth from "../../hooks/useAuth";
+import ListProducts from "../../components/ListProducts";
 import { Loader } from "semantic-ui-react";
 
 export default function favorites() {
@@ -10,20 +10,22 @@ export default function favorites() {
   const [games, setgames] = useState(null);
 
   useEffect(() => {
-    11 <
-      (async () => {
-        const response = await getFavoriteApi(auth.idUser, logout);
-        if (size(response) > 0) {
-          const gamesList = [];
-          forEach(response, (data) => {
-            gamesList.push(data.game);
-          });
-          setgames(gamesList);
-        } else {
-          setgames([]);
-        }
-      })();
+    (async () => {
+      const response = await getFavoriteApi(auth.idUser, logout);
+      console.log(response);
+      if (size(response) > 0) {
+        const gamesList = [];
+        forEach(response, (data) => {
+          gamesList.push(data.producto);
+        });
+        console.log(gamesList);
+        setgames(gamesList);
+      } else {
+        setgames([]);
+      }
+    })();
   }, []);
+  console.log(auth);
   return (
     <div className="whishlist_block">
       <div className="title">Lista de favoritos</div>
@@ -32,7 +34,7 @@ export default function favorites() {
         {games && size(games) === 0 && (
           <div className="data_not-found">No hay juegos</div>
         )}
-        {size(games) > 0 && <ListProducts games={games}></ListProducts>}
+        {size(games) > 0 && <ListProducts products={games}></ListProducts>}
       </div>
     </div>
   );
