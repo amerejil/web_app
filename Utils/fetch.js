@@ -1,11 +1,11 @@
 import { getToken, hasExpiredToken } from "../Api/token";
-export async function authFech(url, params, lougout) {
+export async function authFech(url, params, logout) {
   const token = getToken();
   if (!token) {
-    lougout();
+    logout();
   } else {
     if (hasExpiredToken(token)) {
-      lougout();
+      logout();
     } else {
       const paramsTemp = {
         ...params,

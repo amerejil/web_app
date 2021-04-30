@@ -1,26 +1,23 @@
 import React, { useState, useEffect } from "react";
 
 import { useRouter } from "next/router";
-import useAuth from "../hooks/useAuth";
-import { getMeaApi } from "../Api/user";
-import ChangeNameForm from "../components/Account/ChangeNameForm";
-import ChangeEmailForm from "../components/Account/ChangeEmailForm";
-import ChangePasswordForm from "../components/Account/ChangePasswordForm";
-import BasicModal from "../components/Modal/BasicModal";
+import useAuth from "../../hooks/useAuth";
+import { getMeaApi } from "../../Api/user";
+import ChangeNameForm from "../../components/Account/ChangeNameForm";
+import ChangeEmailForm from "../../components/Account/ChangeEmailForm";
+import ChangePasswordForm from "../../components/Account/ChangePasswordForm";
+import BasicModal from "../../components/Modal/BasicModal";
 import { Icon } from "semantic-ui-react";
-import AddressForm from "../components/Account/AddressForm";
-import ListAddress from "../components/Account/ListAddress";
-export default function account() {
-  const [user, setuser] = useState(undefined);
+import AddressForm from "../../components/Account/AddressForm";
+import ListAddress from "../../components/Account/ListAddress";
+import useUser from "../../hooks/useUser";
+import Header from "../../components/header/Header";
+import useCategories from "../../hooks/useCategories";
+export default function perfil() {
   const { auth, logout, setReloadUser } = useAuth();
   const router = useRouter();
-  useEffect(() => {
-    (async () => {
-      const response = await getMeaApi(logout);
-      setuser(response || null);
-    })();
-  }, [auth]);
-
+  const { user } = useUser();
+  const { categorias } = useCategories();
   if (user === undefined) return null;
   if (!auth && !user) {
     router.replace("/");
@@ -28,6 +25,7 @@ export default function account() {
   }
   return (
     <div>
+      <Header categorias={categorias}></Header>
       <Configuracion
         user={user}
         logout={logout}

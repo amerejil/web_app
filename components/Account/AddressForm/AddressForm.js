@@ -129,7 +129,7 @@ export default function AddressForm(props) {
       </Form.Group>
       <div className="actions">
         <Button className="submit" type="submit" loading={loading}>
-          {newAddress ? "Crear dorección" : "Actualizando dirección"}
+          {newAddress ? "Crear dirección" : "Actualizando dirección"}
         </Button>
       </div>
     </Form>

@@ -8,8 +8,14 @@ import useAuth from "../../hooks/useAuth";
 import useCart from "../../hooks/useCart";
 import useUser from "../../hooks/useUser";
 import Dropdown from "../Dropdown";
+
 export default function Header(props) {
+  const item_submenu_account = [
+    { url: "perfil", title: "Perfil", id: 1 },
+    { url: "favorites", title: "Favoritos", id: 2 },
+  ];
   const { categorias } = props;
+  const [dropdownAccount, setdropdownAccount] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [titleModal, settitleModal] = useState("Iniciar Sesión");
@@ -20,7 +26,7 @@ export default function Header(props) {
   const { auth, logout } = useAuth();
   const { prouductsCart } = useCart();
 
-  const onMouseEnter = () => {
+  const onMouseEnterSubc = () => {
     if (window.innerWidth < 960) {
       setDropdown(false);
     } else {
@@ -28,11 +34,27 @@ export default function Header(props) {
     }
   };
 
-  const onMouseLeave = () => {
+  const onMouseLeaveSubc = () => {
     if (window.innerWidth < 960) {
       setDropdown(false);
     } else {
       setDropdown(false);
+    }
+  };
+
+  const onMouseEnterAccount = () => {
+    if (window.innerWidth < 960) {
+      setdropdownAccount(false);
+    } else {
+      setdropdownAccount(true);
+    }
+  };
+
+  const onMouseLeaveAccount = () => {
+    if (window.innerWidth < 960) {
+      setdropdownAccount(false);
+    } else {
+      setdropdownAccount(false);
     }
   };
 
@@ -73,13 +95,15 @@ export default function Header(props) {
             </li>
             <li
               className="nav-item"
-              onMouseEnter={onMouseEnter}
-              onMouseLeave={onMouseLeave}
+              onMouseEnter={onMouseEnterSubc}
+              onMouseLeave={onMouseLeaveSubc}
             >
               <a href="#sect-2" onClick={closeMobileMenu} className="nav-links">
                 Categorías
               </a>
-              {dropdown && <Dropdown categorias={categorias} />}
+              {dropdown && (
+                <Dropdown submenu="categorias" categorias={categorias} />
+              )}
             </li>
             <li className="nav-item">
               <a href="#sect-3" onClick={closeMobileMenu} className="nav-links">
@@ -88,12 +112,21 @@ export default function Header(props) {
             </li>
 
             {user ? (
-              <li className="nav-item">
-                <Link href="/account">
-                  <a className="nav-links">
-                    <Icon className="user outline" />
-                  </a>
-                </Link>
+              <li
+                onMouseEnter={onMouseEnterAccount}
+                onMouseLeave={onMouseLeaveAccount}
+                className="nav-item"
+              >
+                <a className="nav-links">
+                  <Icon className="user outline" />
+                </a>
+
+                {dropdownAccount && (
+                  <Dropdown
+                    submenu="account"
+                    categorias={item_submenu_account}
+                  />
+                )}
               </li>
             ) : null}
             {auth ? (
