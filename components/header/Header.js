@@ -67,9 +67,15 @@ export default function Header(props) {
   return (
     <>
       <ul className="info">
-        <li>Info1</li>
-        <li>Info2</li>
-        <li>Info3</li>
+        <li>
+          <Icon name="whatsapp"></Icon>0000000000
+        </li>
+        <li>
+          <Icon name="mail"></Icon>Info2@mail.com
+        </li>
+        <li>
+          <Icon name="time"></Icon> 00H00 a 00H00
+        </li>
       </ul>
 
       <nav className="navbar">
@@ -118,7 +124,7 @@ export default function Header(props) {
                 className="nav-item"
               >
                 <a className="nav-links">
-                  <Icon className="user outline" />
+                  <Icon className="user" />
                 </a>
 
                 {dropdownAccount && (
