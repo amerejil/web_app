@@ -14,7 +14,7 @@ export default function redirect() {
         `${BASE_PATH}/auth/google/callback${router}`
       );
       const result = await response.json();
-      console.log(result);
+
       if (result?.jwt) {
         login(result.jwt);
         setisSuccess(true);
