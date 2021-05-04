@@ -27,10 +27,9 @@ export default function Search() {
 
   return (
     <div
-      className="search-box"
+      className={searchActive ? "hover" : "search-box"}
       onMouseLeave={() => setsearchActive(false)}
       onMouseEnter={() => {
-        document.getElementById("search-product").focus();
         setsearchActive(true);
       }}
     >
