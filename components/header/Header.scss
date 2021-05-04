@@ -143,6 +143,7 @@
       }
 
       .nav-menu.active {
+        overflow-x: hidden;
         width: 100%;
         grid-gap: 0px;
         background: linear-gradient(to left, darkslateblue, #660f62);
