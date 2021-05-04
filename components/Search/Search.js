@@ -11,7 +11,7 @@ export default function Search() {
   useEffect(() => {
     (async () => {
       if (size(str) === 0) {
-        setproducts(null);
+        setproducts([]);
       }
       if (str?.length > 0) {
         const product = await searchProductApi(str);
@@ -19,8 +19,12 @@ export default function Search() {
         setproducts(product);
       }
     })();
-  }, [size(str)]);
-
+  }, [str, memo_products]);
+  const memo_products = useMemo(() => {
+    if (size(str) === 0) return [];
+    if (str?.length > 0) return products;
+  }, [products, str]);
+  console.log(products);
   return (
     <div
       className="search-box"
@@ -34,13 +38,13 @@ export default function Search() {
         onChange={(data) => {
           setTimeout(() => {
             setstr(data.target.value);
-          }, 280);
+          }, 330);
         }}
       ></input>
       <div className="icon">
         <Icon className="search"></Icon>
       </div>
-      {searchActive && <SearchCard products={products}></SearchCard>}
+      {searchActive && <SearchCard products={memo_products}></SearchCard>}
     </div>
   );
 }

@@ -2,8 +2,8 @@ import React from "react";
 
 export default function SearchCard(props) {
   const { products } = props;
-  console.log(products);
-  if (!products) return null;
+
+  if (!products.length > 0) return null;
   return (
     <div className="searchCard">
       {products?.map((product) => (
