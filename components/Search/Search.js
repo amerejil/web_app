@@ -3,7 +3,7 @@ import React, { memo, useEffect, useMemo, useState } from "react";
 import { Icon } from "semantic-ui-react";
 let pila = [];
 import { searchProductApi } from "../../Api/product";
-import SearchCard from "../SearchCard/Searchcard";
+import SearchCard from "../SearchCard/SearchCard";
 export default function Search() {
   const [str, setstr] = useState("");
   const [products, setproducts] = useState(null);
