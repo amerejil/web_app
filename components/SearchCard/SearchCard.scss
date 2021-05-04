@@ -1,0 +1,24 @@
+.searchCard {
+  padding: 3%;
+  justify-content: start;
+  width: 300px;
+  position: absolute;
+  top: 55px;
+  background: white;
+  border-radius: 1rem;
+  .one-product {
+    align-items: center;
+    width: 100%;
+    display: flex;
+    img {
+      width: 50px;
+      height: 50px;
+    }
+    .title {
+      width: 70%;
+    }
+    .price {
+      width: 15%;
+    }
+  }
+}

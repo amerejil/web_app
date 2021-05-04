@@ -5,14 +5,12 @@
   display: grid;
   list-style: none;
   text-align: center;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(3, auto);
 
-  justify-content: center;
+  justify-content: space-evenly;
   li {
     font-weight: bold;
     color: #fff;
-    padding-left: 3rem;
-    padding-right: 3rem;
   }
 }
 .navbar {
@@ -185,5 +183,14 @@
   .times {
     color: #fff;
     font-size: 2rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .info {
+    li {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: #fff;
+    }
   }
 }

@@ -13,6 +13,7 @@ export default function Header(props) {
   const item_submenu_account = [
     { url: "perfil", title: "Perfil", id: 1 },
     { url: "favorites", title: "Favoritos", id: 2 },
+    { url: "orders", title: "Pedidos", id: 3 },
   ];
   const { categorias } = props;
   const [dropdownAccount, setdropdownAccount] = useState(false);
@@ -74,7 +75,7 @@ export default function Header(props) {
           <Icon name="mail"></Icon>Info2@mail.com
         </li>
         <li>
-          <Icon name="time"></Icon> 00H00 a 00H00
+          <Icon name="time"></Icon>00H00 a 00H00
         </li>
       </ul>
 
