@@ -12,7 +12,7 @@ export async function getProductByUrlApi(path) {
 }
 export async function searchProductApi(title) {
   try {
-    const url = `${BASE_PATH}/productos?_q=${title}`;
+    const url = `${BASE_PATH}/productos?_q=${title}&_limit=5`;
     const response = await fetch(url);
     const result = await response.json();
     return result;

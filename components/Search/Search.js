@@ -24,7 +24,7 @@ export default function Search() {
     if (size(str) === 0) return [];
     if (str?.length > 0) return products;
   }, [products, str]);
-  console.log(products);
+  console.log("hola");
   return (
     <div
       className="search-box"
