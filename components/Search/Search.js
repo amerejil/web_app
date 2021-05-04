@@ -24,12 +24,15 @@ export default function Search() {
     if (size(str) === 0) return [];
     if (str?.length > 0) return products;
   }, [products, str]);
-  console.log("hola");
+
   return (
     <div
       className="search-box"
       onMouseLeave={() => setsearchActive(false)}
-      onMouseEnter={() => setsearchActive(true)}
+      onMouseEnter={() => {
+        document.getElementById("search-product").focus();
+        setsearchActive(true);
+      }}
     >
       <input
         id="search-product"
