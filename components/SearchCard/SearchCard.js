@@ -11,9 +11,11 @@ export default function SearchCard(props) {
           <Link href={`/${product.url}`}>
             <a>
               <div className="one-product" key={product.id}>
-                <img src={product.imagen.formats.thumbnail.url}></img>
+                <div className="container_img">
+                  <img src={product.imagen.formats.thumbnail.url}></img>
+                </div>
                 <span className="title">{product.title}</span>
-                <span className="precio">${product.price}</span>
+                <span className="precio">${product.price.toFixed(2)}</span>
               </div>
             </a>
           </Link>

@@ -15,17 +15,24 @@
       align-items: center;
       width: 100%;
       display: flex;
-      img {
-        object-fit: contain;
-        margin: auto;
-        width: 20%;
-        height: 70px;
+      .container_img {
+        display: flex;
+        width: 30%;
+        img {
+          border-radius: 0.6rem;
+          object-fit: contain;
+          margin: auto;
+          width: 80px;
+          height: 80px;
+        }
       }
       .title {
+        color: black;
         font-size: 0.95rem;
-        width: 60%;
+        width: 50%;
       }
       .precio {
+        color: $primary;
         width: 20%;
       }
       &:hover {
@@ -36,7 +43,7 @@
   }
 }
 @media screen and (max-width: 960px) {
-  .searchCard {
+  .searchCardAbsolute {
     left: -50px;
   }
 }
