@@ -12,7 +12,7 @@ export default function SearchCard(props) {
             <a>
               <div className="one-product">
                 <div className="container_img">
-                  <img src={product.imagen.formats.thumbnail.url}></img>
+                  <img src={product.imagen[0].formats.thumbnail.url}></img>
                 </div>
                 <span className="title">{product.title}</span>
                 <span className="precio">${product.price.toFixed(2)}</span>

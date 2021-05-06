@@ -49,7 +49,7 @@ export default function Summary(props) {
                       onClick={() => removeProduct(product)}
                     ></Icon>
                     <Image
-                      src={product.imagen.formats.thumbnail.url}
+                      src={product.imagen[0].formats.thumbnail.url}
                       alt={product.title}
                     ></Image>
                     {product.title}
