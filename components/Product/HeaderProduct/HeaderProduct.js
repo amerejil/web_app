@@ -19,7 +19,7 @@ export default function HeaderProduct(props) {
   console.log(imagen);
   return (
     <Grid className="header-product">
-      <Grid.Column mobile={16} tablet={7} computer={7}>
+      <Grid.Column className="img_product" mobile={16} tablet={7} computer={7}>
         <div className="container_img">
           <img src={url} alt={title}></img>
         </div>
@@ -34,7 +34,7 @@ export default function HeaderProduct(props) {
           ))}
         </div>
       </Grid.Column>
-      <GridColumn mobile={16} tablet={9} computer={9}>
+      <GridColumn className="info_product" mobile={16} tablet={9} computer={9}>
         <Info product={product}></Info>
       </GridColumn>
     </Grid>
@@ -120,6 +120,7 @@ function Info(props) {
           Comprar
         </Button>
       </div>
+      <div className="header-product_colors"></div>
     </>
   );
 }
