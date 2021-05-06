@@ -1,5 +1,7 @@
 .list-products {
+  width: 100% !important;
   .ui.grid {
+    margin: 0 !important;
     .row.columnas {
       justify-content: space-evenly;
       gap: 1em;

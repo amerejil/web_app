@@ -8,9 +8,9 @@ export default function SearchCard(props) {
     <div className="searchCardAbsolute">
       <div className="searchCard">
         {products?.map((product) => (
-          <Link href={`/${product.url}`}>
+          <Link href={`/${product.url}`} key={product.id}>
             <a>
-              <div className="one-product" key={product.id}>
+              <div className="one-product">
                 <div className="container_img">
                   <img src={product.imagen.formats.thumbnail.url}></img>
                 </div>

@@ -113,9 +113,11 @@ export default function Header(props) {
               )}
             </li>
             <li className="nav-item">
-              <a href="#sect-3" onClick={closeMobileMenu} className="nav-links">
-                Promociones
-              </a>
+              <Link href="/promociones">
+                <a onClick={closeMobileMenu} className="nav-links">
+                  Promociones
+                </a>
+              </Link>
             </li>
 
             {user ? (

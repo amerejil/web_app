@@ -3,6 +3,9 @@ import { Icon, Image } from "semantic-ui-react";
 export default function CardProductBest() {
   return (
     <div className="card_productB">
+      <div className="card__name">
+        <p>Nombre</p>
+      </div>
       <div className="card_product_absolute">
         <Image
           loading="lazy"
@@ -23,9 +26,6 @@ export default function CardProductBest() {
             <Icon className="cart"></Icon>
           </div>
         </div>
-      </div>
-      <div className="card__name">
-        <p>Nombre</p>
       </div>
     </div>
   );

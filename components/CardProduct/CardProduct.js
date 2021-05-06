@@ -82,8 +82,16 @@ export default function CardProduct(props) {
           </div>
 
           <div className="card_price">
-            <span className="card__preci--before">$0.00</span>
-            <span className="card__preci--now">${product.price}</span>
+            {product.discount && product.discount > 0 ? (
+              <span className="card__preci--before">${product.price}</span>
+            ) : null}
+            <span className="card__preci--now">
+              $
+              {(
+                product.price -
+                Math.floor(product.price * product.discount) / 100
+              ).toFixed(2)}
+            </span>
           </div>
           <div className="card__icon cart">
             <Icon
