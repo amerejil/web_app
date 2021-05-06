@@ -13,11 +13,14 @@ import useCart from "../../../hooks/useCart";
 
 export default function HeaderProduct(props) {
   const { product } = props;
+
   const { imagen, title } = product;
+  const [url, seturl] = useState(imagen[0].url);
+  console.log(url);
   return (
     <Grid className="header-game">
       <Grid.Column mobile={16} tablet={6} computer={7}>
-        <Image src={imagen.url} alt={title} fluid></Image>
+        <Image src={url} alt={title} fluid></Image>
       </Grid.Column>
       <GridColumn mobile={16} tablet={10} computer={9}>
         <Info product={product}></Info>
