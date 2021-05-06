@@ -16,13 +16,25 @@ export default function HeaderProduct(props) {
 
   const { imagen, title } = product;
   const [url, seturl] = useState(imagen[0].url);
-  console.log(url);
+  console.log(imagen);
   return (
-    <Grid className="header-game">
-      <Grid.Column mobile={16} tablet={6} computer={7}>
-        <Image src={url} alt={title} fluid></Image>
+    <Grid className="header-product">
+      <Grid.Column mobile={16} tablet={7} computer={7}>
+        <div className="container_img">
+          <img src={url} alt={title}></img>
+        </div>
+
+        <div className="container_img_thumbnail">
+          {imagen.map((i) => (
+            <img
+              className="img_thumbnail"
+              onClick={() => seturl(i.url)}
+              src={i.formats.thumbnail.url}
+            ></img>
+          ))}
+        </div>
       </Grid.Column>
-      <GridColumn mobile={16} tablet={10} computer={9}>
+      <GridColumn mobile={16} tablet={9} computer={9}>
         <Info product={product}></Info>
       </GridColumn>
     </Grid>
@@ -64,7 +76,7 @@ function Info(props) {
   };
   return (
     <>
-      <div className="header-game_title">
+      <div className="header-product_title">
         {product.title}
         <Icon
           name={isFavorite ? "heart" : "heart outline"}
@@ -75,8 +87,8 @@ function Info(props) {
           onClick={isFavorite ? deleteFavorite : addFavorite}
         ></Icon>
       </div>
-      <div className="header-game_delivery">Entrega en 24/48 horas</div>
-      <div className="header-game_summary">
+      <div className="header-product_delivery">Entrega en 24/48 horas</div>
+      <div className="header-product_summary">
         <p>
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -87,11 +99,11 @@ function Info(props) {
           culpa qui officia deserunt mollit anim id est laborum."
         </p>
       </div>
-      <div className="header-game_buy">
-        <div className="header-game_buy-price">
+      <div className="header-product_buy">
+        <div className="header-product_buy-price">
           <p>Precio de venta al público: ${product.price}</p>
-          <div className="header-game_buy-price-actions">
-            <p>{product.discount}%</p>
+          <div className="header-product_buy-price-actions">
+            <p>-{product.discount}%</p>
             <p>
               $
               {(
@@ -102,7 +114,7 @@ function Info(props) {
           </div>
         </div>
         <Button
-          className="header-game_buy-btn"
+          className="header-product_buy-btn"
           onClick={() => addProductCart(product)}
         >
           Comprar
