@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
-import getDestacadosApi from "../../../Api/destacados";
+import { getDestacadosApi } from "../../../Api/destacados";
 
 import CardProductBest from "../../../components/CardProductBest";
 import CardProduct from "../../CardProduct/CardProduct";
