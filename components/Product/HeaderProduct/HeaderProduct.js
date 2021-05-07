@@ -15,8 +15,10 @@ export default function HeaderProduct(props) {
   const { product } = props;
 
   const { imagen, title } = product;
-  const [url, seturl] = useState(imagen[0].url);
-  console.log(imagen);
+  const [url, seturl] = useState(null);
+  useEffect(() => {
+    seturl(imagen[0].url);
+  }, [product]);
   return (
     <Grid className="header-product">
       <Grid.Column className="img_product" mobile={16} tablet={7} computer={7}>
@@ -95,8 +97,7 @@ function Info(props) {
           minim veniam, quis nostrud exercitation ullamco laboris nisi ut
           aliquip ex ea commodo consequat. Duis aute irure dolor in
           reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum."
+          pariatur. Excepteur sint occaecat cupidatat non proident,"
         </p>
       </div>
       <div className="header-product_buy">
