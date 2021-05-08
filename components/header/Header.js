@@ -11,8 +11,26 @@ import Dropdown from "../Dropdown";
 import { useRouter } from "next/router";
 
 export default function Header(props) {
-  document.body.style.paddingTop = 0;
-  document.body.classList.remove("fixed-nav");
+  const [isFixed, setisFixed] = useState(false);
+  const r = useRouter();
+
+  function fixnavbar() {
+    const page = document.querySelector(".page-product");
+    if (window.scrollY >= 30) {
+      page.style.paddingTop = "80px";
+      setisFixed(true);
+    } else {
+      page.style.paddingTop = 0;
+      setisFixed(false);
+    }
+  }
+  useEffect(() => {
+    if (r.pathname === "/[product]")
+      window.addEventListener("scroll", fixnavbar, [{ once: true }]);
+    return () => {
+      window.removeEventListener("scroll", fixnavbar, [{ once: true }]);
+    };
+  }, [r]);
   const item_submenu_account = [
     { url: "perfil", title: "Perfil", id: 1 },
     { url: "favorites", title: "Favoritos", id: 2 },
@@ -82,15 +100,18 @@ export default function Header(props) {
         </li>
       </ul>
 
-      <nav className="navbar">
+      <nav className={isFixed ? "navbar-fixed" : "navbar"}>
         <div className="navbar-container">
           <Link href="/" onClick={closeMobileMenu}>
             <a className="navbar-logo">
-              <img
-                src="https://lx-1992.s3.us-east-2.amazonaws.com/thumbnail_Logo_Porcelanito_36c21b403e.png"
-                alt="Porcelanito"
-              ></img>
-              El Porcelanito
+              <div>
+                <img
+                  src="https://lx-1992.s3.us-east-2.amazonaws.com/thumbnail_Logo_Porcelanito_36c21b403e.png"
+                  alt="Porcelanito"
+                ></img>
+              </div>
+
+              <span>El Porcelanito</span>
             </a>
           </Link>
           <div className="menu-icon">

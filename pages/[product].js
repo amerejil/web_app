@@ -9,32 +9,20 @@ export default function Product() {
   const { categorias } = useCategories();
   const [product, setproduct] = useState(null);
   const { query } = useRouter();
+  const [isFixed, setisFixed] = useState(false);
   const nav = document?.querySelector("nav.navbar");
   const NavTop = nav?.offsetTop;
-  function fixnavbar() {
-    if (window.scrollY >= 30) {
-      document.body.style.paddingTop = "80px";
-
-      document.body.classList.add("fixed-nav");
-    } else {
-      document.body.style.paddingTop = 0;
-      document.body.classList.remove("fixed-nav");
-    }
-  }
 
   useEffect(() => {
-    window.addEventListener("scroll", fixnavbar, [{ once: true }]);
     (async () => {
       const response = await getProductByUrlApi(query.product);
       setproduct(response);
     })();
-    return () => {
-      window.removeEventListener("scroll", fixnavbar, [{ once: true }]);
-    };
+    return () => {};
   }, [query]);
 
   return (
-    <div className="page-product">
+    <div className={"page-product"}>
       {product && (
         <>
           <Header categorias={categorias}></Header>

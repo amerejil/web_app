@@ -33,6 +33,7 @@ export default function HeaderProduct(props) {
         <div className="container_img_thumbnail">
           {imagen.map((i) => (
             <img
+              key={i.id}
               className="img_thumbnail"
               onClick={() => seturl(i.url)}
               src={i.formats.thumbnail.url}
