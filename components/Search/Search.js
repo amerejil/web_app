@@ -35,7 +35,7 @@ export default function Search() {
     >
       <input
         id="search-product"
-        type="text"
+        type="search"
         placeholder="Buscar"
         onChange={(data) => {
           setTimeout(() => {

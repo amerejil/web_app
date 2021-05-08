@@ -18,10 +18,14 @@ export default function HeaderProduct(props) {
   const [url, seturl] = useState(null);
   useEffect(() => {
     seturl(imagen[0].url);
+    return () => {
+      seturl(null);
+    };
   }, [product]);
+
   return (
-    <Grid className="header-product">
-      <Grid.Column className="img_product" mobile={16} tablet={7} computer={7}>
+    <div className="header-product">
+      <div className="img_product">
         <div className="container_img">
           <img src={url} alt={title}></img>
         </div>
@@ -35,11 +39,11 @@ export default function HeaderProduct(props) {
             ></img>
           ))}
         </div>
-      </Grid.Column>
-      <GridColumn className="info_product" mobile={16} tablet={9} computer={9}>
+      </div>
+      <div className="info_product">
         <Info product={product}></Info>
-      </GridColumn>
-    </Grid>
+      </div>
+    </div>
   );
 }
 

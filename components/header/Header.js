@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import BasicModal from "../Modal/BasicModal";
 import { Icon, Label } from "semantic-ui-react";
 import Link from "next/link";
@@ -8,6 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import useCart from "../../hooks/useCart";
 import useUser from "../../hooks/useUser";
 import Dropdown from "../Dropdown";
+import { useRouter } from "next/router";
 
 export default function Header(props) {
   const item_submenu_account = [
