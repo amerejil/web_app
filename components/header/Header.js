@@ -11,6 +11,8 @@ import Dropdown from "../Dropdown";
 import { useRouter } from "next/router";
 
 export default function Header(props) {
+  document.body.style.paddingTop = 0;
+  document.body.classList.remove("fixed-nav");
   const item_submenu_account = [
     { url: "perfil", title: "Perfil", id: 1 },
     { url: "favorites", title: "Favoritos", id: 2 },

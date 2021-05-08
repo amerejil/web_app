@@ -54,6 +54,7 @@
     font-weight: bold;
   }
   i.icon {
+    margin: 0%;
     position: absolute;
     height: 100%;
     top: 0;
@@ -79,9 +80,13 @@
     padding: 0.5% 0;
   }
   &_summary {
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
     height: 40%;
     background-color: whitesmoke;
-    padding: 20px;
+    padding: 2%;
     font-size: 14px;
   }
   &_buy {
@@ -91,41 +96,56 @@
     width: 100%;
     background-color: #202040;
     color: white;
-    padding: 15px 20px;
+    padding: 1.5% 2.5%;
 
     &-price {
-      padding: 2%;
+      flex-direction: column;
+      width: 60%;
+      height: 100%;
       display: flex;
 
       > p {
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 30% !important;
         text-align: center;
         color: $font-gray;
         margin: 0;
       }
       &-actions {
+        height: 70% !important;
         display: flex;
-        justify-content: space-between;
-        align-items: baseline;
+        justify-content: space-evenly;
+        align-items: center;
         > p {
           margin: 0;
           font-weight: bold;
           &:first-of-type {
-            font-size: 25px;
+            font-size: 1.5rem;
           }
           &:last-of-type {
-            font-size: 40px;
+            font-size: 2.5rem;
             color: $primary;
           }
         }
       }
     }
-    &-btn.ui.button {
-      position: relative;
-      min-width: 100px !important;
+    .container-button {
+      display: flex !important;
       width: 40%;
-      background-color: $primary !important;
-      color: white !important;
-      font-size: 1rem;
+      justify-content: flex-end;
+      .header-product_buy-btn {
+        padding: 6.5% 0.5% !important;
+        margin: 0% !important;
+        position: relative;
+        min-width: 60px !important;
+        width: 60%;
+        background-color: $primary !important;
+        color: white !important;
+        font-size: 1rem;
+      }
     }
   }
   &_colors {
@@ -139,6 +159,32 @@
     flex-direction: column;
     &_title {
       font-size: 0.95re;
+    }
+    &_delivery {
+      font-size: 1rem;
+    }
+    &_summary {
+      font-size: 0.95rem;
+    }
+    &_buy {
+      &-price {
+        > p {
+          font-size: 0.9rem;
+        }
+        &-actions {
+          > p {
+            &:first-of-type {
+              font-size: 1.2rem;
+            }
+            &:last-of-type {
+              font-size: 2rem;
+            }
+          }
+        }
+      }
+      &-btn {
+        font-size: 0.78rem !important;
+      }
     }
     .img_product {
       width: 100% !important;

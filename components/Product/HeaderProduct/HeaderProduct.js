@@ -118,12 +118,14 @@ function Info(props) {
             </p>
           </div>
         </div>
-        <Button
-          className="header-product_buy-btn"
-          onClick={() => addProductCart(product)}
-        >
-          Comprar
-        </Button>
+        <div className="container-button">
+          <Button
+            className="header-product_buy-btn"
+            onClick={() => addProductCart(product)}
+          >
+            Comprar
+          </Button>
+        </div>
       </div>
       <div className="header-product_colors"></div>
     </>
