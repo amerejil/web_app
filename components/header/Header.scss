@@ -5,8 +5,9 @@
   display: grid;
   list-style: none;
   text-align: center;
+  position: sticky;
   grid-template-columns: repeat(3, auto);
-  top: 0%;
+
   justify-content: space-evenly;
   li {
     font-weight: bold;
@@ -38,7 +39,7 @@
   align-items: center;
   position: sticky;
   font-size: 1.2rem;
-  top: 0;
+  top: 0%;
   z-index: 999;
 
   &-container {

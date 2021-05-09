@@ -8,7 +8,7 @@ import useCategories from "../hooks/useCategories";
 import { getBannerApi } from "../Api/banner";
 
 export default function Home() {
-  const [banners, setbanners] = useState([]);
+  const [banners, setbanners] = useState(null);
   const { categorias } = useCategories();
   useEffect(() => {
     (async () => {
@@ -18,9 +18,9 @@ export default function Home() {
   }, []);
   return (
     <div className="home">
-      {!categorias && <Loader active> Cargando página</Loader>}
+      {!categorias && !banners && <Loader active> Cargando página</Loader>}
 
-      {categorias && (
+      {categorias && banners && (
         <>
           <Header categorias={categorias}></Header>
           <Section_1 banners={banners}></Section_1>
