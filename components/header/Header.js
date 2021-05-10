@@ -106,7 +106,7 @@ export default function Header(props) {
             <a className="navbar-logo">
               <div>
                 <img
-                  src="https://lx-1992.s3.us-east-2.amazonaws.com/thumbnail_Logo_Porcelanito_36c21b403e.png"
+                  src="https://lx-1992.s3.us-east-2.amazonaws.com/thumbnail_Logo_Porcelanito_38a0314fb8.webp"
                   alt="Porcelanito"
                 ></img>
               </div>
