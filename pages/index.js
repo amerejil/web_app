@@ -6,8 +6,10 @@ import { Loader } from "semantic-ui-react";
 import Productos_Destacados from "../components/Sections/Productos_Destacados";
 import useCategories from "../hooks/useCategories";
 import { getBannerApi } from "../Api/banner";
+import { useRouter } from "next/router";
 
 export default function Home() {
+  const r = useRouter();
   const [banners, setbanners] = useState(null);
   const { categorias } = useCategories();
   useEffect(() => {
@@ -15,7 +17,7 @@ export default function Home() {
       const response = await getBannerApi();
       setbanners(response);
     })();
-  }, []);
+  }, [r]);
   return (
     <div className="home">
       {!categorias && !banners && <Loader active> Cargando página</Loader>}
