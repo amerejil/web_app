@@ -12,6 +12,10 @@
   li {
     font-weight: bold;
     color: #fff;
+    i {
+      font-size: 1.2rem;
+      margin-right: 3.5px;
+    }
   }
 }
 .navbar-fixed {
@@ -89,9 +93,7 @@
             border-radius: 50%;
             background-color: red;
           }
-          .user.outline {
-            margin: 1%;
-          }
+
           i {
             margin: 0;
           }

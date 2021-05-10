@@ -74,11 +74,14 @@ export default function CardProduct(props) {
 
         <div className="card__precis">
           <div className="card__icon heart">
-            <Icon
-              className={isFavorite ? "heart outline pink_ " : "heart outline"}
+            <i
+              class={isFavorite ? "far fa-heart pink_ " : "far fa-heart"}
               onClick={isFavorite ? deleteFavorite : addFavorite}
-            ></Icon>
-            <Icon className={isFavorite ? "heart fill" : "heart"}></Icon>
+            ></i>
+
+            <i
+              className={isFavorite ? "fas fa-heart fill" : "fas fa-heart"}
+            ></i>
           </div>
 
           <div className="card_price">
@@ -94,14 +97,18 @@ export default function CardProduct(props) {
             </span>
           </div>
           <div className="card__icon cart">
-            <Icon
-              className={productFound?.length > 0 ? "cart pink" : "cart"}
+            <i
+              class={
+                productFound?.length > 0
+                  ? "fas fa-shopping-cart pink"
+                  : "fas fa-shopping-cart"
+              }
               onClick={
                 !(productFound?.length > 0)
                   ? () => addProductCart(product)
                   : () => removeProductCart(product)
               }
-            ></Icon>
+            ></i>
           </div>
         </div>
       </div>

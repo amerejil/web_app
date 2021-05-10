@@ -22,6 +22,9 @@
     padding: 20px;
   }
   .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0 0 0 0;
     position: absolute;
     height: 50px;
@@ -33,11 +36,15 @@
     top: 50%;
     transform: translate(0, -50%);
   }
-  .search {
-    margin: 0 0 0 0;
+  .fa-search {
+    font-weight: bold;
+    border-radius: 50%;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 40px;
+    margin: 0 0 0 0;
   }
 }
 .hover {
@@ -67,10 +74,12 @@
   .icon {
     margin: 0 0 0 0;
     position: absolute;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: white;
     right: 0px;
-    border-radius: 50%;
+    border-radius: 50% !important;
     top: 50%;
     transform: translate(0, -50%);
 
@@ -78,10 +87,15 @@
     width: 40px;
     color: white;
     margin-right: 5px;
-    .search {
+
+    .fa-search {
+      font-weight: bold;
+      border-radius: 50%;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
+      height: 40px;
+      width: 40px;
       background: darkslateblue;
       margin: 0 0 0 0;
     }

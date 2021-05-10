@@ -90,13 +90,13 @@ export default function Header(props) {
     <>
       <ul className="info">
         <li>
-          <Icon name="whatsapp"></Icon>0000000000
+          <i class="fab fa-whatsapp"></i>0000000000
         </li>
         <li>
-          <Icon name="mail"></Icon>Info2@mail.com
+          <i class="far fa-envelope"></i>Info2@mail.com
         </li>
         <li>
-          <Icon name="time"></Icon>00H00 a 00H00
+          <i class="far fa-clock"></i>00H00 a 00H00
         </li>
       </ul>
 
@@ -151,7 +151,7 @@ export default function Header(props) {
                 className="nav-item"
               >
                 <a className="nav-links">
-                  <Icon className="user" />
+                  <i class="fas fa-user"></i>
                 </a>
 
                 {dropdownAccount && (
@@ -165,7 +165,7 @@ export default function Header(props) {
             {auth ? (
               <li className="nav-item">
                 <div className="nav-links" onClick={logout}>
-                  <Icon className="power off"></Icon>
+                  <i class="fas fa-power-off"></i>
                 </div>
               </li>
             ) : (
@@ -186,7 +186,7 @@ export default function Header(props) {
             <li className="nav-item">
               <Link href="/cart">
                 <a className="nav-links">
-                  <Icon className="cart"></Icon>
+                  <i class="fas fa-shopping-cart"></i>
                   {prouductsCart > 0 && (
                     <div className="count-cart">{prouductsCart}</div>
                   )}

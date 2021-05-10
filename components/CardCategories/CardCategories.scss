@@ -11,7 +11,12 @@
   margin: 1.2%;
 
   transition: 0.5s;
+  a.card-container {
+    text-decoration: none;
+  }
   .card-absolute {
+    display: flex;
+    flex-direction: column;
     width: 220px;
     height: 250px;
 

@@ -86,12 +86,12 @@
           transition: 0.4s ease-in-out;
         }
 
-        .heart.outline.pink_ {
+        .far.fa-heart.pink_ {
           position: relative;
 
           color: #f51bad !important ;
         }
-        .heart.outline {
+        .far.fa-heart {
           position: relative;
           transform: scale(1);
           z-index: 2;
@@ -101,7 +101,7 @@
             color: #f51bad;
           }
         }
-        .heart {
+        .fa-heart {
           position: absolute;
           top: 0;
           left: 0;
@@ -109,12 +109,17 @@
           color: #f51bad;
           transition: 0.4s ease-in-out;
         }
-        .heart.fill {
+        .fa-heart.fill {
           position: absolute;
           top: 0;
           left: 0;
           transform: scale(1);
           color: #f51bad;
+        }
+        &.cart {
+          .fa-shopping-cart.pink {
+            color: #f51bad;
+          }
         }
       }
 

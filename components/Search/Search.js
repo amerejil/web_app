@@ -44,7 +44,7 @@ export default function Search() {
         }}
       ></input>
       <div className="icon">
-        <Icon className="search"></Icon>
+        <i class="fas fa-search"></i>
       </div>
       {searchActive && <SearchCard products={memo_products}></SearchCard>}
     </div>
