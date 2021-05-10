@@ -75,7 +75,7 @@ export default function CardProduct(props) {
         <div className="card__precis">
           <div className="card__icon heart">
             <i
-              class={isFavorite ? "far fa-heart pink_ " : "far fa-heart"}
+              className={isFavorite ? "far fa-heart pink_ " : "far fa-heart"}
               onClick={isFavorite ? deleteFavorite : addFavorite}
             ></i>
 
@@ -98,7 +98,7 @@ export default function CardProduct(props) {
           </div>
           <div className="card__icon cart">
             <i
-              class={
+              className={
                 productFound?.length > 0
                   ? "fas fa-shopping-cart pink"
                   : "fas fa-shopping-cart"
