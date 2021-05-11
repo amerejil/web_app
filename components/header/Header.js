@@ -90,13 +90,13 @@ export default function Header(props) {
     <>
       <ul className="info">
         <li>
-          <i className="fab fa-whatsapp"></i>0000000000
+          <i className="fab fa-whatsapp"></i>0962588254
         </li>
         <li>
           <i className="far fa-envelope"></i>Info2@mail.com
         </li>
         <li>
-          <i className="far fa-clock"></i>00H00 a 00H00
+          <i className="far fa-clock"></i>09h00am a 06h30pm
         </li>
       </ul>
 
