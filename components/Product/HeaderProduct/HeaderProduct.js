@@ -54,6 +54,9 @@ function Info(props) {
   const { product } = props;
   const { addProductCart } = useCart();
   const [isFavorite, setisFavorite] = useState(false);
+  let array_colors = [];
+  if (product.Colores) array_colors = product.Colores.split(",");
+
   useEffect(() => {
     (async () => {
       if (auth) {
@@ -81,6 +84,7 @@ function Info(props) {
       setreloadFavorite(true);
     }
   };
+
   return (
     <>
       <div className="header-product_title">
@@ -96,14 +100,7 @@ function Info(props) {
       </div>
       <div className="header-product_delivery">Entrega en 24/48 horas</div>
       <div className="header-product_summary">
-        <p>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident,"
-        </p>
+        <p>{product.summary}</p>
       </div>
       <div className="header-product_buy">
         <div className="header-product_buy-price">
@@ -128,7 +125,19 @@ function Info(props) {
           </Button>
         </div>
       </div>
-      <div className="header-product_colors"></div>
+      <div className="header-product_colors">
+        {array_colors.map((color) => (
+          <div
+            className="color_product"
+            key={product.id + color}
+            style={{
+              width: "50px",
+              height: "50px",
+              background: color,
+            }}
+          ></div>
+        ))}
+      </div>
     </>
   );
 }

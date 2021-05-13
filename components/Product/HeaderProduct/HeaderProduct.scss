@@ -22,7 +22,7 @@
       .img_thumbnail {
         padding: 0.6%;
         object-fit: contain;
-        height: 60%;
+        height: 66%;
       }
     }
   }
@@ -43,6 +43,7 @@
     flex-direction: column;
   }
   &_title {
+    font-size: 1.16rem;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -77,7 +78,7 @@
     text-align: center;
     color: $primary;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 1.2rem;
     padding: 0.5% 0;
   }
   &_summary {
@@ -150,7 +151,12 @@
     }
   }
   &_colors {
+    display: flex;
+    flex-direction: row;
     height: 20%;
+    .color_product {
+      margin: 1%;
+    }
   }
 }
 @media screen and (max-width: 767px) {
