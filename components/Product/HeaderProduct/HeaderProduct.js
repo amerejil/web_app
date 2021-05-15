@@ -156,8 +156,8 @@ function Info(props) {
               className="color_product"
               key={product.id + color}
               style={{
-                width: "17px",
-                height: "17px",
+                width: "19px",
+                height: "19px",
                 background: color,
               }}
             ></div>
