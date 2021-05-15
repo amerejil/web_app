@@ -120,6 +120,25 @@ function Info(props) {
       <div className="header-product_summary">
         <p>{product.summary}</p>
       </div>
+      {!(array_colors.length === 0) && (
+        <div className="header-product_colors">
+          <p className="text_option"> Escoga un color</p>
+          <div className="color_container">
+            {array_colors.map((color) => (
+              <div
+                onClick={() => handlecolor(color)}
+                className="color_product"
+                key={product.id + color}
+                style={{
+                  width: "18.8px",
+                  height: "18.8px",
+                  background: color,
+                }}
+              ></div>
+            ))}
+          </div>
+        </div>
+      )}
       <div className="header-product_buy">
         <div className="header-product_buy-price">
           <p>
@@ -145,23 +164,6 @@ function Info(props) {
           >
             Comprar
           </Button>
-        </div>
-      </div>
-      <div className="header-product_colors">
-        <p className="text_option"> Escoga un color</p>
-        <div className="color_container">
-          {array_colors.map((color) => (
-            <div
-              onClick={() => handlecolor(color)}
-              className="color_product"
-              key={product.id + color}
-              style={{
-                width: "19px",
-                height: "19px",
-                background: color,
-              }}
-            ></div>
-          ))}
         </div>
       </div>
     </>

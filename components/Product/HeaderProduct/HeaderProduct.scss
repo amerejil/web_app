@@ -157,16 +157,16 @@
     .text_option {
       margin: 0%;
       align-items: center;
-      height: 30%;
+      height: 25%;
       width: 100%;
       display: flex;
       flex-direction: row;
     }
     .color_container {
-      justify-content: space-evenly;
+      row-gap: 0.7%;
       grid-template-columns: repeat(9, 1fr);
       align-items: center;
-      height: 70%;
+      height: 75%;
       justify-items: center;
       display: grid;
       width: 100%;
@@ -174,7 +174,6 @@
       .color_product {
         border-radius: 50%;
         border: 1px solid #202040;
-        margin: 0.7%;
       }
     }
   }
