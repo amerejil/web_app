@@ -9,9 +9,6 @@ export default function Product() {
   const { categorias } = useCategories();
   const [product, setproduct] = useState(null);
   const { query } = useRouter();
-  const [isFixed, setisFixed] = useState(false);
-  const nav = document?.querySelector("nav.navbar");
-  const NavTop = nav?.offsetTop;
 
   useEffect(() => {
     (async () => {
@@ -20,7 +17,7 @@ export default function Product() {
     })();
     return () => {};
   }, [query]);
-
+  console.log(product);
   return (
     <div className={"page-product"}>
       {product && (

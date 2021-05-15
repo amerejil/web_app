@@ -152,10 +152,27 @@
   }
   &_colors {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: 20%;
-    .color_product {
-      margin: 1%;
+    .text_option {
+      margin: 0%;
+      align-items: center;
+      height: 40%;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+    }
+    .color_container {
+      align-items: center;
+      height: 60%;
+      justify-content: center;
+      display: flex;
+      width: 100%;
+      .color_product {
+        border-radius: 50%;
+        border: 1px solid black;
+        margin: 0.7%;
+      }
     }
   }
 }
