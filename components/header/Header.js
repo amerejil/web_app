@@ -47,7 +47,13 @@ export default function Header(props) {
   const { user } = useUser();
   const { auth, logout } = useAuth();
   const { prouductsCart } = useCart();
-
+  const hadleClickSubc = () => {
+    if (window.innerWidth < 960) {
+      setDropdown(true);
+    } else {
+      setDropdown(false);
+    }
+  };
   const onMouseEnterSubc = () => {
     if (window.innerWidth < 960) {
       setDropdown(false);
@@ -126,10 +132,11 @@ export default function Header(props) {
             </li>
             <li
               className="nav-item"
+              onClick={hadleClickSubc}
               onMouseEnter={onMouseEnterSubc}
               onMouseLeave={onMouseLeaveSubc}
             >
-              <a href="#sect-2" onClick={closeMobileMenu} className="nav-links">
+              <a href="#sect-2" className="nav-links">
                 Categorías
               </a>
               {dropdown && (

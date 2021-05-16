@@ -157,6 +157,8 @@
         opacity: 1;
 
         .nav-item {
+          height: auto;
+          flex-direction: column;
           .nav-links:hover {
             border-bottom: 0;
           }
@@ -178,6 +180,7 @@
 
         .nav-item {
           .nav-links {
+            height: auto;
             cursor: none;
             text-align: center;
             padding: 2rem;

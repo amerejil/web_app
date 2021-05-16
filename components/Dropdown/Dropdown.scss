@@ -22,3 +22,13 @@
 .dropdown-menu.clicked {
   display: none;
 }
+@media screen and (max-width: 960px) {
+  .dropdown-menu {
+    width: 100%;
+    position: relative;
+    top: 0px;
+    .nav-links {
+      padding: 2rem !important;
+    }
+  }
+}
