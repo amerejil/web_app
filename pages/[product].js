@@ -17,7 +17,7 @@ export default function Product() {
     })();
     return () => {};
   }, [query]);
-  console.log(product);
+
   return (
     <div className={"page-product"}>
       {product && (

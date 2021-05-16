@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 
 export default function HeaderProduct(props) {
   const { product } = props;
-
+  const [selectColor, setselectColor] = useState("");
   const { imagen, title } = product;
   const [url, seturl] = useState(null);
   useEffect(() => {
@@ -43,7 +43,7 @@ export default function HeaderProduct(props) {
         </div>
       </div>
       <div className="info_product">
-        <Info product={product}></Info>
+        <Info product={product} setselectColor={setselectColor}></Info>
       </div>
     </div>
   );
@@ -54,7 +54,7 @@ function Info(props) {
   const [reloadFavorite, setreloadFavorite] = useState(false);
   const [isSelectedArrary, setSelectedArrary] = useState([]);
   const { auth, logout } = useAuth();
-  const { product } = props;
+  const { product, setselectColor } = props;
   const { addProductCart } = useCart();
   const [isFavorite, setisFavorite] = useState(false);
   let array_colors = [];
@@ -70,10 +70,15 @@ function Info(props) {
   const info_color = isSelectedArrary.filter((i) => i.estado === true);
   const isSelect = info_color.length === 0 ? false : info_color[0].estado;
   console.log(isSelect);
-  function handlecolor(color) {
-    console.log("hola color");
-    const temp = initialState.filter((i) => !(i.id === color));
-    setSelectedArrary([...temp, { id: color, estado: true }]);
+  function hadleSelectColor(color) {
+    const temp = isSelectedArrary.filter((i) => i.id === color);
+
+    return temp[0]?.estado;
+  }
+  function handlecolor(i) {
+    const temp = initialState;
+    temp[i].estado = true;
+    setSelectedArrary(temp);
   }
   useEffect(() => {
     (async () => {
@@ -123,18 +128,27 @@ function Info(props) {
       {!(array_colors.length === 0) && (
         <div className="header-product_colors">
           <p className="text_option"> Escoga un color</p>
-          <div className="color_container">
-            {array_colors.map((color) => (
+          <div className="colors_container">
+            {array_colors.map((color, i) => (
               <div
-                onClick={() => handlecolor(color)}
-                className="color_product"
                 key={product.id + color}
+                className="single_color_container"
                 style={{
-                  width: "18.8px",
-                  height: "18.8px",
-                  background: color,
+                  border: isSelectedArrary[i]?.estado
+                    ? `1px solid #202040`
+                    : `1px solid #ffffff`,
                 }}
-              ></div>
+              >
+                <div
+                  onClick={() => handlecolor(i)}
+                  className="color_product"
+                  style={{
+                    width: "18px",
+                    height: "18px",
+                    background: color,
+                  }}
+                ></div>
+              </div>
             ))}
           </div>
         </div>
