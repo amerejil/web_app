@@ -49,7 +49,7 @@ export default function Header(props) {
   const { prouductsCart } = useCart();
   const hadleClickSubc = () => {
     if (window.innerWidth < 960) {
-      setDropdown(true);
+      setDropdown(!dropdown);
     } else {
       setDropdown(false);
     }

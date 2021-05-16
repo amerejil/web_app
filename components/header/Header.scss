@@ -177,10 +177,12 @@
         opacity: 1;
         transition: 0.3s ease-in-out;
         z-index: 1;
-
+        &::-webkit-scrollbar {
+          display: none;
+        }
         .nav-item {
           .nav-links {
-            height: auto;
+            height: 80px;
             cursor: none;
             text-align: center;
             padding: 2rem;

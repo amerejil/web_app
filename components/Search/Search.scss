@@ -6,6 +6,7 @@
   border-radius: 50px;
   background: rgb(255, 255, 255);
   transition: 0.4s;
+  margin: 8px;
 
   input {
     position: absolute;
@@ -50,7 +51,7 @@
 .hover {
   z-index: 4;
   position: relative;
-
+  margin: 8px;
   border-radius: 50px;
   background: rgb(255, 255, 255);
   transition: 0.4s;
