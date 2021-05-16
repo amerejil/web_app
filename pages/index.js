@@ -7,6 +7,7 @@ import Productos_Destacados from "../components/Sections/Productos_Destacados";
 import useCategories from "../hooks/useCategories";
 import { getBannerApi } from "../Api/banner";
 import { useRouter } from "next/router";
+import Footer from "../components/Sections/Footer";
 
 export default function Home() {
   const r = useRouter();
@@ -28,6 +29,7 @@ export default function Home() {
           <Section_1 banners={banners}></Section_1>
           <Section_2 categorias={categorias}></Section_2>
           <Productos_Destacados></Productos_Destacados>
+          <Footer></Footer>
         </>
       )}
     </div>

@@ -1,0 +1,31 @@
+.footer_container {
+  font-size: 1rem;
+  padding: 2rem;
+  background-color: #202040;
+  color: white;
+  align-items: center;
+  height: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  .left_footer {
+    width: 33.33%;
+    &_link {
+      color: white;
+    }
+  }
+  .center_footer {
+    width: 33.33%;
+  }
+  .right_footer {
+    width: 33.33%;
+    i {
+      margin: 1%;
+      font-size: 1.4rem;
+    }
+  }
+  .copyright-container {
+    flex-direction: column;
+    display: flex;
+  }
+}
