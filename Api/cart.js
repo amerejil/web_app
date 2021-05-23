@@ -22,9 +22,31 @@ export function addProductCart(product) {
     });
     localStorage.setItem(CART, JSON.stringify([product]));
     toast.success("Producto añadido al carrito");
-  } else {
+  } else if (!product.color) {
     const productFound = cart.filter((item) => item.id === product.id);
     console.log(product.id);
+    if (productFound.length > 0) {
+      toast.warning("Este producto ya esta en el carrito");
+    } else if (!product.quantity) {
+      Object.defineProperty(product, "quantity", {
+        value: 1,
+        writable: true,
+        enumerable: true,
+        configurable: true,
+      });
+      cart.push(product);
+      localStorage.setItem(CART, JSON.stringify(cart));
+      toast.success("Producto añadido al carrito");
+    } else {
+      cart.push(product);
+      localStorage.setItem(CART, JSON.stringify(cart));
+      toast.success("Producto añadido al carrito");
+    }
+  } else {
+    const productFound = cart.filter(
+      (item) => item.id === product.id && item.color === product.color
+    );
+    console.log(productFound);
     if (productFound.length > 0) {
       toast.warning("Este producto ya esta en el carrito");
     } else if (!product.quantity) {
@@ -56,9 +78,16 @@ export function countProductsCart() {
 
 export function removeProductCart(product) {
   const cart = getProductsCart();
-  remove(cart, (item) => {
-    return item.id === product.id;
-  });
+  if (!product.color) {
+    remove(cart, (item) => {
+      return item.id === product.id;
+    });
+  } else {
+    remove(cart, (item) => {
+      return item.id === product.id && item.color === product.color;
+    });
+  }
+
   if (size(cart) > 0) {
     localStorage.setItem(CART, JSON.stringify(cart));
   } else {

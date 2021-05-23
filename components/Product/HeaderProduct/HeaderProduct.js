@@ -87,12 +87,20 @@ function Info(props) {
 
   const info_color = isSelectedArrary.filter((i) => i.estado === true);
   const isSelect = info_color.length === 0 ? false : info_color[0].estado;
-  //console.log(isSelect);
-  function hadleSelectColor(color) {
-    const temp = isSelectedArrary.filter((i) => i.id === color);
+  console.log(info_color);
 
-    return temp[0]?.estado;
-  }
+  useEffect(() => {
+    if (info_color[0]?.id) {
+      console.log("hola color " + info_color[0]?.id);
+      Object.defineProperty(product, "color", {
+        value: info_color[0].id,
+        writable: true,
+        enumerable: true,
+        configurable: true,
+      });
+    }
+  }, [info_color]);
+
   function handlecolor(i) {
     const temp = initialState;
     temp[i].estado = true;
@@ -125,7 +133,7 @@ function Info(props) {
       setreloadFavorite(true);
     }
   };
-  // console.log(product);
+  console.log(product);
   return (
     <>
       <div className="header-product_title">
