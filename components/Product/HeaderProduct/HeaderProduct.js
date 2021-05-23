@@ -11,6 +11,7 @@ import useAuth from "../../../hooks/useAuth";
 import classNames from "classnames";
 import useCart from "../../../hooks/useCart";
 import { useRouter } from "next/router";
+import Quantity_page_product from "../Quantity_page_product";
 
 export default function HeaderProduct(props) {
   const { product } = props;
@@ -51,6 +52,7 @@ export default function HeaderProduct(props) {
 
 function Info(props) {
   const r = useRouter();
+  const [quantity, setquantity] = useState(1);
   const [reloadFavorite, setreloadFavorite] = useState(false);
   const [isSelectedArrary, setSelectedArrary] = useState([]);
   const { auth, logout } = useAuth();
@@ -63,13 +65,29 @@ function Info(props) {
     id: i,
     estado: false,
   }));
+
   useEffect(() => {
     setSelectedArrary(initialState);
+    setquantity(1);
     return () => {};
   }, [r]);
+
+  useEffect(() => {
+    if (product.quantity) {
+      product.quantity = quantity;
+    } else {
+      Object.defineProperty(product, "quantity", {
+        value: quantity,
+        writable: true,
+        enumerable: true,
+        configurable: true,
+      });
+    }
+  }, [quantity]);
+
   const info_color = isSelectedArrary.filter((i) => i.estado === true);
   const isSelect = info_color.length === 0 ? false : info_color[0].estado;
-  console.log(isSelect);
+  //console.log(isSelect);
   function hadleSelectColor(color) {
     const temp = isSelectedArrary.filter((i) => i.id === color);
 
@@ -107,7 +125,7 @@ function Info(props) {
       setreloadFavorite(true);
     }
   };
-
+  // console.log(product);
   return (
     <>
       <div className="header-product_title">
@@ -143,8 +161,8 @@ function Info(props) {
                   onClick={() => handlecolor(i)}
                   className="color_product"
                   style={{
-                    width: "18px",
-                    height: "18px",
+                    width: "20px",
+                    height: "20px",
                     background: color,
                   }}
                 ></div>
@@ -169,6 +187,12 @@ function Info(props) {
               ).toFixed(2)}
             </p>
           </div>
+        </div>
+        <div className="quantity_container">
+          <Quantity_page_product
+            setquantity={setquantity}
+            quantity={quantity}
+          ></Quantity_page_product>
         </div>
         <div className="container-button">
           <Button

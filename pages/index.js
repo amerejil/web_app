@@ -8,6 +8,7 @@ import useCategories from "../hooks/useCategories";
 import { getBannerApi } from "../Api/banner";
 import { useRouter } from "next/router";
 import Footer from "../components/Sections/Footer";
+import Seo from "../components/Seo";
 
 export default function Home() {
   const r = useRouter();

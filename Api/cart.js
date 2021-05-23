@@ -27,13 +27,17 @@ export function addProductCart(product) {
     console.log(product.id);
     if (productFound.length > 0) {
       toast.warning("Este producto ya esta en el carrito");
-    } else {
+    } else if (!product.quantity) {
       Object.defineProperty(product, "quantity", {
         value: 1,
         writable: true,
         enumerable: true,
         configurable: true,
       });
+      cart.push(product);
+      localStorage.setItem(CART, JSON.stringify(cart));
+      toast.success("Producto añadido al carrito");
+    } else {
       cart.push(product);
       localStorage.setItem(CART, JSON.stringify(cart));
       toast.success("Producto añadido al carrito");
