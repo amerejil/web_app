@@ -42,6 +42,7 @@
     height: calc(100vh - 110px) !important;
     display: flex !important;
     flex-direction: column;
+    justify-content: center;
   }
   &_title {
     font-size: 1.16rem;
@@ -237,6 +238,9 @@
     .info_product {
       width: 100% !important;
       height: calc(100vh - 80px) !important;
+    }
+    .info_product {
+      justify-content: stretch;
     }
     &_colors {
       .colors_container {
