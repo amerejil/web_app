@@ -15,7 +15,6 @@ import Quantity_page_product from "../Quantity_page_product";
 
 export default function HeaderProduct(props) {
   const { product } = props;
-  const [selectColor, setselectColor] = useState("");
   const { imagen, title } = product;
   const [url, seturl] = useState(null);
   useEffect(() => {
@@ -44,7 +43,7 @@ export default function HeaderProduct(props) {
         </div>
       </div>
       <div className="info_product">
-        <Info product={product} setselectColor={setselectColor}></Info>
+        <Info product={product}></Info>
       </div>
     </div>
   );
@@ -56,7 +55,7 @@ function Info(props) {
   const [reloadFavorite, setreloadFavorite] = useState(false);
   const [isSelectedArrary, setSelectedArrary] = useState([]);
   const { auth, logout } = useAuth();
-  const { product, setselectColor } = props;
+  const { product } = props;
   const { addProductCart } = useCart();
   const [isFavorite, setisFavorite] = useState(false);
   let array_colors = [];

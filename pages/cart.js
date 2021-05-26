@@ -5,6 +5,7 @@ import Sumary from "../components/Cart/Summary";
 import Header from "../components/header";
 import useCategories from "../hooks/useCategories";
 import { Loader } from "semantic-ui-react";
+import AddressShipping from "../components/Cart/AddressShipping/AddressShipping";
 
 export default function cart() {
   const [reloadCart, setreloadCart] = useState(false);
@@ -45,7 +46,7 @@ function EmptyCart() {
 
 function FullCart(props) {
   const { products, reloadCart, setreloadCart } = props;
-
+  const [address, setaddress] = useState(null);
   return (
     <div className="full-cart">
       <Sumary
@@ -53,6 +54,7 @@ function FullCart(props) {
         reloadCart={reloadCart}
         setreloadCart={setreloadCart}
       ></Sumary>
+      <AddressShipping setaddress={setaddress}></AddressShipping>
     </div>
   );
 }
