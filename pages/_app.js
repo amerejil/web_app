@@ -116,7 +116,7 @@ export default function MyApp({ Component, pageProps }) {
       <UserContext.Provider value={userLogin}>
         <CategoriesContext.Provider value={categoriesData}>
           <Cartcontext.Provider value={cartData}>
-            <title>El porcelanito</title>
+            <title>Ferrecity</title>
             <Component {...pageProps} />
             <ToastContainer
               position="top-right"

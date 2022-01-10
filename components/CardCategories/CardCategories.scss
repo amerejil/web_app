@@ -1,13 +1,12 @@
 .card-container {
-  background-color: white;
+  //background: linear-gradient(270deg, #e0e6ef, #eeeeee);
   display: flex;
   width: 220px;
   height: 250px;
 
   justify-content: center;
   align-items: center;
-  border-radius: 8px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  //border-radius: 8px;
   margin: 1.2%;
 
   transition: 0.5s;
@@ -21,10 +20,11 @@
     height: 250px;
 
     .imagen {
+      border: 3px solid #1667de !important;
       object-fit: cover;
-      border-radius: 8px 8px 0 0;
-      height: 85%;
-      width: 100%;
+      border-radius: 50%;
+      height: auto;
+      width: 85%;
 
       margin: auto;
     }
@@ -36,12 +36,9 @@
       font-size: 1.2rem;
       margin: 0%;
       text-align: center;
-      color: #0aa3a8;
+      color: #0457c8;
     }
   }
-}
-.card-container:hover {
-  transform: scale(1.06);
 }
 
 @media screen and (max-width: 600px) {

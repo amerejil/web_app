@@ -112,12 +112,10 @@ export default function Header(props) {
             <a className="navbar-logo">
               <div>
                 <img
-                  src="https://lx-1992.s3.us-east-2.amazonaws.com/thumbnail_Logo_Porcelanito_38a0314fb8.webp"
+                  src="https://lx-1992.s3.us-east-2.amazonaws.com/logo_ferrecity_1_4962c823ff.webp"
                   alt="Porcelanito"
                 ></img>
               </div>
-
-              <span>El Porcelanito</span>
             </a>
           </Link>
           <div className="menu-icon">
@@ -129,26 +127,6 @@ export default function Header(props) {
           <ul className={click ? "nav-menu active" : "nav-menu"}>
             <li className="nav-item">
               <Search></Search>
-            </li>
-            <li
-              className="nav-item"
-              onClick={hadleClickSubc}
-              onMouseEnter={onMouseEnterSubc}
-              onMouseLeave={onMouseLeaveSubc}
-            >
-              <a href="#sect-2" className="nav-links">
-                Categorías
-              </a>
-              {dropdown && (
-                <Dropdown submenu="categorias" categorias={categorias} />
-              )}
-            </li>
-            <li className="nav-item">
-              <Link href="/promociones">
-                <a onClick={closeMobileMenu} className="nav-links">
-                  Promociones
-                </a>
-              </Link>
             </li>
 
             {user ? (
@@ -203,6 +181,9 @@ export default function Header(props) {
           </ul>
         </div>
       </nav>
+      <div className="bottom-nav-container">
+        <nav className="bottom-nav">Hola</nav>
+      </div>
       <BasicModal
         show={showModal}
         setShow={setShowModal}
