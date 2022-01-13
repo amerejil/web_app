@@ -182,7 +182,21 @@ export default function Header(props) {
         </div>
       </nav>
       <div className="bottom-nav-container">
-        <nav className="bottom-nav">Hola</nav>
+        <nav className="bottom-nav">
+          <div className="bottom-nav-left-container">
+            <ul className="bottom-nav-left-ul">
+              <li>
+                <a>Categorias</a>
+              </li>
+              <li>
+                <a>Promociones</a>
+              </li>
+              <li>
+                <a>Proudctos nuevos</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
       </div>
       <BasicModal
         show={showModal}

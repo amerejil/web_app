@@ -26,7 +26,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
+  border-bottom: 1px solid #4976e6;
   font-size: 1.2rem;
   top: 0;
   z-index: 999;
@@ -45,7 +45,7 @@
   font-size: 1.2rem;
   top: 0%;
   z-index: 999;
-
+  border-bottom: 1px solid #4976e6;
   &-container {
     margin-left: 2%;
     margin-right: 2%;
@@ -134,6 +134,28 @@
   }
   &-logo:hover {
     color: #fff;
+  }
+}
+.bottom-nav-container {
+  background-color: #0046be;
+  .bottom-nav {
+    display: flex;
+    padding: 12px 12px;
+    align-items: center;
+    flex-direction: row;
+    .bottom-nav-left-container {
+      display: flex;
+      .bottom-nav-left-ul {
+        display: flex;
+        li {
+          list-style: none;
+          a {
+            color: #fff;
+            margin-right: 20px;
+          }
+        }
+      }
+    }
   }
 }
 @media screen and (max-width: 960px) {
